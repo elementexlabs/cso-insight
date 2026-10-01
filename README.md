@@ -1,0 +1,98 @@
+# cso-insight
+
+**Buyer decision: Are these public overflow reports reliable enough to guide outfall priorities or justify a rainfall model?**
+
+This work sample traces intake, QA, cohort accounting and baseline evaluation.
+Reported priorities change under the volume cap, and the simple mean-volume baseline
+beats the rainfall model. Better reporting and local validation are prerequisites
+for deployment. This supplies no firm client reference or operational validation.
+
+Verification receipts: [round 5 local checks](docs/LOCAL_CHECKS_R5.json),
+[regression and regeneration receipts](docs/verification/R5_RECEIPTS.md), and
+[generated results](RESULTS.md). The independent review remains local-only; these
+receipts record repairs and checks, without implying a new independent approval.
+
+## Case study (Massachusetts EEA, hold-out 2025)
+
+**Task:** Rank outfalls and compare rainfall-response modelling against simple baselines on open notification CSVs.
+
+**Data:** 16,720 CSO rows from the [Archive of Massachusetts Environmental Data (AMEND)](https://openamend.org/data/EEADP_CSO.csv) feed (snapshot hash pinned in `docs/DATA_MANIFEST.md`). Volume and rainfall are co-reported utility fields; 48% of rows lack one or both measurements.
+
+**Headline result:** Report-row counts across identifiers are stable from train+validation to 2025. The mean-volume baseline beats the log1p rainfall model on the model-scorable paired test subset. See [generated results](RESULTS.md) for values, intervals and cohort denominators. This Massachusetts demonstration is a work sample; it does not establish local utility validation or operational readiness.
+
+**Counting unit:** Both Public Notification Report and Verified Data Report rows are retained. A physical discharge can have multiple reports. We have not reconciled stages into distinct discharges. Report-class sensitivity and missingness are exported; the missing-measurement rows are overwhelmingly notification-stage submissions.
+
+**Exclusions:** The volume cap excludes 156 evaluation-period reports; 159 across the full feed. The 32.1% volume reduction uses 2022-2025 reported volume after other eligibility rules, relative to the same cohort with the volume cap relaxed. This is filter sensitivity, not a verified error correction. The 171 evaluation identifiers include 169 named IDs and two pooled UNKNOWN permittee buckets.
+
+**Scoring support:** RMSE scores 1,625/1,643 eligible paired 2025 rows and 1,625/3,075 eligible 2025 reports. Eighteen paired rows across ten IDs lack a training model (at least five variable-rainfall pairs required). The baseline uses exactly the same scored subset.
+
+**Threshold support:** Positive means at or above the training+validation 75th percentile. Of 1,643 eligible test rows with known rainfall, 1,635 have at least three training rainfall observations; eight rows across five identifiers default negative and remain in the denominator. This conditional fraction does not measure detection or accuracy on non-event days.
+
+**Evaluation status:** The frozen analysis plan is amended retrospectively; pre-result registration is unverified. Its archived bytes and SHA-256 are preserved. Results were seen before `docs/PREREGISTRATION_AMENDMENT_2026-10-01.md` clarified estimands. Rainfall-normalized outfall ranking was not evaluated; Spearman compares raw event counts.
+
+Regenerate analytical outputs and browser results:
+
+```bash
+cso-insight run --root .
+```
+
+Open `results/report.html` for the engineer summary. See `RESULTS.md` for code-generated metrics.
+
+## Open by design
+
+**Open by design.** ElementeX Labs Inc. publishes methods, data sources, and evaluation code so others can verify and extend the work. No client data, no hidden steps, no results without the command that regenerates them.
+
+## What is new
+
+Bounded engineering contribution: an integrated open Python work sample that ingests Massachusetts notification CSVs, flags data quality issues, fits per-outfall log1p rainfall-response models, produces descriptive rankings with bootstrap intervals on counts/volumes, and evaluates amended hold-out baselines in one command.
+
+This package offers a packaged strict-typed API, an explicit cohort ledger, an amended held-out comparison and declared stop checks. It makes no claim of a new rainfall-CSO method. AMEND already has tests and automated chart regeneration. Its [analysis/EEA_DP_CSO_map.py](https://github.com/nesanders/MAenvironmentaldata/blob/b0a5c729abb41ba77b24ec0f6df835eee0a5887f/analysis/EEA_DP_CSO_map.py), [tests](https://github.com/nesanders/MAenvironmentaldata/tree/b0a5c729abb41ba77b24ec0f6df835eee0a5887f/tests), and [workflows](https://github.com/nesanders/MAenvironmentaldata/tree/b0a5c729abb41ba77b24ec0f6df835eee0a5887f/.github/workflows) were reviewed on 2026-10-01 (immutable commit `b0a5c729abb41ba77b24ec0f6df835eee0a5887f`, identified by the independent round 4 review; links pinned here). Comparisons are bounded to those paths; no absence-of-capability claims are made.
+
+Pairing utility co-reported fields here involves no external meteorological join. AMEND also performs external weather alignment. SWMM and PySWMM provide hydraulic simulation and a simulation interface, respectively.
+
+Nearest prior art:
+
+- [EPA SWMM](https://www.epa.gov/water-research/storm-water-management-model-swmm) and [PySWMM](https://joss.theoj.org/papers/10.21105/joss.02292): physics-based simulation, not notification analytics.
+- [AMEND dashboard and open scripts](https://openamend.org/dashboard.html): CSV-backed discharge analysis, rainfall alignment and reporting-quality views on the same Massachusetts feed; this package adds typed API, cohort exports and amended hold-out metrics.
+- McGrath et al. (2019), rainfall controls on CSO variability, [doi:10.1029/2019WR025336](https://doi.org/10.1029/2019WR025336): analytical rainfall-CSO modelling on network and rainfall structure, not notification ingestion.
+
+## Quick start
+
+```bash
+python3.11 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements-lock.txt
+pip install --no-deps -e .
+./scripts/download_data.sh   # optional: separate, hash-verified acquisition file
+cso-insight run --root .
+```
+
+## Data licence
+
+Primary dataset: Massachusetts EEA CSO notifications via [openamend.org/data/EEADP_CSO.csv](https://openamend.org/data/EEADP_CSO.csv). See [docs/DATA_MANIFEST.md](docs/DATA_MANIFEST.md) for provenance, attribution and redistribution scope. The current outputs contain factual aggregates only. Raw rows, event IDs, individual QA measurements and event-pair scatter are withheld. Historical commits contained record-linked QA derivatives; the separate clean public snapshot excludes that history. Original documentation and figure design licences do not relicense upstream data.
+
+Metro Vancouver publishes a [real-time overflow map](https://metrovancouver.org/services/liquid-waste/real-time-sewer-overflow-map) and annual PDF reports but no open event-level download via the route we reviewed. This work sample uses Massachusetts data to demonstrate methods applicable to regional CSO programs.
+
+## Limitations
+
+- Notification data are utility-reported, not independently audited.
+- Volume and rainfall are missing on many rows; descriptive rankings reflect reporting coverage.
+- 2022 data begin July 2 (partial year).
+- Volume plausibility cap removes large reported overflows from descriptive totals; see sensitivity in `results/cohort_summary.json`.
+- Bootstrap intervals resample events, not storms; they omit fitting uncertainty and measurement error.
+- The rainfall model does not beat the mean-volume baseline on held-out RMSE.
+- Rainfall-normalized outfall ranking was not evaluated.
+- Results are for method demonstration, not operational utility decisions.
+
+## Documentation
+
+- [Technical report](docs/technical-report.md) (CC BY 4.0)
+- [Data manifest](docs/DATA_MANIFEST.md)
+- [Frozen analysis plan, amended retrospectively](docs/PREREGISTRATION_STATUS.md) and [amendment](docs/PREREGISTRATION_AMENDMENT_2026-10-01.md)
+- [Plan status](docs/PREREGISTRATION_STATUS.md) and [release procedure](docs/RELEASE.md)
+
+## Licence
+
+Supported reproducible installation: Python 3.11 and 3.12 with the pinned lock. Other versions are not covered by this installation contract. Peak memory has not been measured. Local checks do not constitute a remote CI receipt.
+
+Code: Apache-2.0 (see [LICENSE](LICENSE)). Original documentation and figure design in `results/figures/`: [CC BY 4.0](docs/LICENSE-CC-BY-4.0.txt) with source attribution in report captions.

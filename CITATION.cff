@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: cso-insight
+message: "If you use this software, please cite it as below."
+authors:
+  - name: ElementeX Labs Inc.
+date-released: 2026-10-01
+url: "https://github.com/elementexlabs/cso-insight"
+license: Apache-2.0
+version: 0.1.0

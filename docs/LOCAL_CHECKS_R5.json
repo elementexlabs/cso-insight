@@ -1,0 +1,293 @@
+{
+  "verification_date": "2026-10-01",
+  "scope": "Local repairs and checks; no new independent approval, remote CI, publication or operational validation",
+  "reviewed_candidate": "3946f6fe73dd31640532051d1dd6e84d3a9b908a",
+  "python": "3.11.15",
+  "platform": "Darwin arm64",
+  "tested_installation": "Fresh Python 3.11.15 venv; exact requirements-lock.txt from cached wheels, then explicit editable checkout installation; isolated wheel build",
+  "python_312": "Configured CI target; not rerun for round 5 locally",
+  "requirements_lock_sha256": "2569843a95e396e67c7970afab621ccfab426c7411a931de1c20910cf8a1ba82",
+  "preregistration_sha256": "500f3e0a55d2478436e2bfcdd8eb35575e3be871b844415a744cab2d98926af8",
+  "data_snapshot_sha256": "0e8a56ebf1870646431de7c1d326065fbcd9cd27f63132e0790e79eb5ef231c3",
+  "tests_passed": 96,
+  "regressions": {
+    "before_failures": 21,
+    "after_passes": 21
+  },
+  "coverage": {
+    "covered_lines": 940,
+    "num_statements": 991,
+    "percent_covered": 92.30152365677627,
+    "percent_covered_display": "92",
+    "missing_lines": 51,
+    "excluded_lines": 0,
+    "percent_statements_covered": 94.85368314833501,
+    "percent_statements_covered_display": "95",
+    "num_branches": 256,
+    "num_partial_branches": 43,
+    "covered_branches": 211,
+    "missing_branches": 45,
+    "percent_branches_covered": 82.421875,
+    "percent_branches_covered_display": "82"
+  },
+  "local_checks": {
+    "ruff": "pass (src tests scripts)",
+    "format": "pass (src tests scripts)",
+    "mypy": "pass (18 source files)",
+    "pyright": "pass (0 errors, 0 warnings)",
+    "mkdocs": "pass (strict)",
+    "publication_contracts": "pass",
+    "wheel": "pass (isolated, cached build dependencies)",
+    "pip_check": "pass",
+    "git_diff_check": "pass"
+  },
+  "regeneration": "Clean parentless public checkout; raw initially absent; matching permitted private snapshot supplied; documented --skip-download command; analytical/browser/figure outputs byte-identical; only timings.json changes; normalized hash matches",
+  "live_download": "Attempted in clean checkout; DNS resolution blocked in sandbox; permanent snapshot acquisition not asserted",
+  "headline_metrics_unchanged": true,
+  "timestamp_audit": {
+    "corrected_clock_report_rows_by_meridiem": {
+      "PM": 709,
+      "AM": 66
+    },
+    "unresolved_clock_report_rows_by_reason": {
+      "malformed_clock": 198
+    },
+    "cohort_time_status_report_rows": {
+      "12_hour": 1380,
+      "24_hour": 15142,
+      "malformed_clock": 198
+    },
+    "normalized_sha256": "9748fa25fd49b79530f717323bf371195fbf7a5a4899aeeab0c6949643973f57"
+  },
+  "checked_source_sha256": {
+    "src/cso_insight/__init__.py": "038f6a52f2b230e17034d9d44b05a083e5f1275b59de63150d3efcb3b3f5b9bf",
+    "src/cso_insight/align.py": "33d6296da2f505e3a05ddc1b230b397bc90384f94ab54e61c833033f06c0be0a",
+    "src/cso_insight/attribution.py": "efaa77d48402cd5cef790385940f65ed2671cd3bb21867173e9ebaf8b2a9dfb4",
+    "src/cso_insight/baselines.py": "7df6b3c7126fcf201577356316a369bd3f5b7787962ceda406d8e4791256815b",
+    "src/cso_insight/clean.py": "6a866d1b2f272fac5c44a5897ef3a1b9da2dcc5bcb2390c016466750f2113e27",
+    "src/cso_insight/cli.py": "592d96ef8b875ccca19aa387feec25fb118b72fadbcf21c275c92861d27a001e",
+    "src/cso_insight/cohort.py": "e2ffb3c794df4edcd7b91d30cf540d3fb8f1519a0507cc2ef65c31221022d7b7",
+    "src/cso_insight/config.py": "54ec9dcc7b6e65693ad16708e92ba8a529c2983088f982b221057706150b9526",
+    "src/cso_insight/download.py": "e7bdbdaea9b644a49066a7a6bd812e318be99ffe4e4da12b9160f92110a1ca1e",
+    "src/cso_insight/evaluate.py": "550fb268ae544e852ffa7be17fbabe5803cfa032c54e9092d4eed46e03fc1a31",
+    "src/cso_insight/events.py": "8bc8f3ed606b431dbd2ea47bb3820fae5cb709cfda0282fc2dfcdd54d5926573",
+    "src/cso_insight/ingest.py": "3af07dea7d02d4827fb4b6f7dc5ba69671afaa84c680dff1ceade0feb070cde5",
+    "src/cso_insight/model.py": "731eb79f0fb65c593c98d90b2c6d75709f3f729eb501a33a5289eb99166aa496",
+    "src/cso_insight/pipeline.py": "a42e3df4faf38ecdbf9408dadcfd2cd91f96628d1130eadc21999a2ef3540712",
+    "src/cso_insight/publication.py": "84feffec52e7c4ca31456593a2f27224bc9aeef13c0e109d99194372d3e72279",
+    "src/cso_insight/quality.py": "2bac0ef11aab991458f6d868355b87ee63783c955a362d56da8fcefbba86f8af",
+    "src/cso_insight/rank.py": "4fada8dfe40d0696fde1c826457d3768c7c86e8dbbdaaf471a19090003b25dab",
+    "src/cso_insight/report.py": "a8eaae2ceee6b8f648e3161466a4c8ed02ec21c08e4e044a12fb348580282c11",
+    "scripts/check_publication.py": "489d1f7da498098151ebc9d380af3409ddd89abe00f719d19e6aa5c4818dabf6",
+    "scripts/download_data.sh": "c99cab2915f0340060fe8977ed51f77ddf40b93c8c58ef401ed9e8a5dada25a2",
+    "scripts/prepare_public.py": "da9ec8666dd0a1b2cd4e50739aedf906330ecb2eae2ab6ee843e417d29c7bca1",
+    "tests/conftest.py": "cf2145389b9facc6f12e2e50e0a73f92aad719332faefc4e652337491e282377",
+    "tests/test_baselines.py": "01a84ff59b7b13eefb4ba0149262752f731fcd26e4b8919ea0380d09fafbbde5",
+    "tests/test_cohort.py": "cdbde18f10d8695bcf9e5b183704d539e14dda22ee12c989734277bf67e7a1d7",
+    "tests/test_config.py": "69e2c977e1f80188469b2cbd4e44e3f508a1ed7ae71c193e04fb8de38e824df2",
+    "tests/test_coverage_gaps.py": "9f642843e07f720b917f3700a73ab0ce23593fb83e4515238e46adf80fefb56a",
+    "tests/test_download.py": "e27ed742a5d6a22df47a76c6c4af4420e7f686cb8a101532180e5e3fd3185c0e",
+    "tests/test_evaluate.py": "9c756219092ce31caad9be8457303b11c9eb8d86172e3725952684eef4c50a2b",
+    "tests/test_evaluate_full.py": "5f3d0bb1e85e0ee9ccd4b3a457fbe364a8698ddc864100417bed2e47a7614c01",
+    "tests/test_events.py": "edfac0397d6fa04f2776b9d7a2a36a155d49210730b69353ca8eddf023f6b7a0",
+    "tests/test_ingest.py": "8f969b60a5ca5b2bbdf168c1c6f10a2ff19b936890461d674f3dae0cb43746bd",
+    "tests/test_model.py": "06d9b74ddf9e8c9698b6ac9ac0e2d6a9b64b0f16a2d5b057589c13dbae65133e",
+    "tests/test_pipeline.py": "741a9d6152371576df898f280af8bb4d7b5ba7c5e32bc9cf80d23c25f52fee09",
+    "tests/test_publication_fixes.py": "1327ff1cae95ebdf77c7f474524ff48cb89133880a6dbb8a2d7c598ac955b04f",
+    "tests/test_publication_r4.py": "7c417911561e0f3ff70fb203a9ab5a6d0ad3e513f4a088e609748f88a427e576",
+    "tests/test_publication_r5.py": "80874c73adb12b01e7ce9bf36a855b462ffa2852fc84e8324fc47cebcbba1b7c",
+    "tests/test_rank.py": "bd61ce18d0428248f0cdf2d6ca2371f93fb90ec12180f568ce64a48d499307f2",
+    "tests/test_report.py": "3fbee43dec7f546d6f07fe1d87426b1c511abc166593046d5c002a8d6f2fee57",
+    "tests/test_security.py": "a12b4aabec8d997240292c472823be1019b9ff1bce287444aa2cc9a5c4cb6822"
+  },
+  "packages": [
+    {
+      "name": "ast_serialize",
+      "version": "0.11.2"
+    },
+    {
+      "name": "click",
+      "version": "8.5.0"
+    },
+    {
+      "name": "contourpy",
+      "version": "1.3.3"
+    },
+    {
+      "name": "coverage",
+      "version": "7.16.2"
+    },
+    {
+      "name": "cso-insight",
+      "version": "0.1.0"
+    },
+    {
+      "name": "cycler",
+      "version": "0.12.1"
+    },
+    {
+      "name": "fonttools",
+      "version": "4.66.1"
+    },
+    {
+      "name": "ghp-import",
+      "version": "2.1.0"
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.0"
+    },
+    {
+      "name": "Jinja2",
+      "version": "3.1.6"
+    },
+    {
+      "name": "kiwisolver",
+      "version": "1.5.1"
+    },
+    {
+      "name": "librt",
+      "version": "0.16.0"
+    },
+    {
+      "name": "Markdown",
+      "version": "3.11"
+    },
+    {
+      "name": "MarkupSafe",
+      "version": "3.0.3"
+    },
+    {
+      "name": "matplotlib",
+      "version": "3.11.2"
+    },
+    {
+      "name": "mergedeep",
+      "version": "1.3.4"
+    },
+    {
+      "name": "mkdocs",
+      "version": "1.6.1"
+    },
+    {
+      "name": "mkdocs-get-deps",
+      "version": "0.2.2"
+    },
+    {
+      "name": "mypy",
+      "version": "2.3.1"
+    },
+    {
+      "name": "mypy_extensions",
+      "version": "1.1.0"
+    },
+    {
+      "name": "nodeenv",
+      "version": "1.11.0"
+    },
+    {
+      "name": "numpy",
+      "version": "2.4.6"
+    },
+    {
+      "name": "numpy-typing-compat",
+      "version": "20251206.2.4"
+    },
+    {
+      "name": "optype",
+      "version": "0.17.1"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3"
+    },
+    {
+      "name": "pandas",
+      "version": "3.0.6"
+    },
+    {
+      "name": "pathspec",
+      "version": "1.1.1"
+    },
+    {
+      "name": "pillow",
+      "version": "12.3.0"
+    },
+    {
+      "name": "pip",
+      "version": "24.0"
+    },
+    {
+      "name": "platformdirs",
+      "version": "4.12.2"
+    },
+    {
+      "name": "pluggy",
+      "version": "1.6.0"
+    },
+    {
+      "name": "Pygments",
+      "version": "2.21.0"
+    },
+    {
+      "name": "pyparsing",
+      "version": "3.3.3"
+    },
+    {
+      "name": "pyright",
+      "version": "1.1.414"
+    },
+    {
+      "name": "pytest",
+      "version": "9.1.1"
+    },
+    {
+      "name": "pytest-cov",
+      "version": "7.1.0"
+    },
+    {
+      "name": "python-dateutil",
+      "version": "2.9.0.post0"
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.3"
+    },
+    {
+      "name": "pyyaml_env_tag",
+      "version": "1.1"
+    },
+    {
+      "name": "ruff",
+      "version": "0.16.9"
+    },
+    {
+      "name": "scipy",
+      "version": "1.17.1"
+    },
+    {
+      "name": "scipy-stubs",
+      "version": "1.17.1.5"
+    },
+    {
+      "name": "setuptools",
+      "version": "79.0.1"
+    },
+    {
+      "name": "six",
+      "version": "1.17.0"
+    },
+    {
+      "name": "types-PyYAML",
+      "version": "6.0.12.20260906"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0"
+    },
+    {
+      "name": "watchdog",
+      "version": "6.0.0"
+    }
+  ]
+}

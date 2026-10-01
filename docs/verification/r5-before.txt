@@ -1,0 +1,23 @@
+=========================== short test summary info ============================
+FAILED tests/test_publication_r5.py::test_r2_clock_contract[1:11-PM-13-12_hour]
+FAILED tests/test_publication_r5.py::test_r2_clock_contract[12:00-AM-0-12_hour]
+FAILED tests/test_publication_r5.py::test_r2_clock_contract[12:00-PM-12-12_hour]
+FAILED tests/test_publication_r5.py::test_r2_clock_contract[14:30:15--14-24_hour]
+FAILED tests/test_publication_r5.py::test_r2_clock_contract[08:00--8-24_hour]
+FAILED tests/test_publication_r5.py::test_r2_clock_contract[14:30-PM-14-24_hour]
+FAILED tests/test_publication_r5.py::test_r2_clock_contract[0:15-AM-0-24_hour]
+FAILED tests/test_publication_r5.py::test_r2_clock_contract[0:15-PM-None-ambiguous_zero_pm]
+FAILED tests/test_publication_r5.py::test_r2_clock_contract[14:30-AM-None-conflicting_meridiem]
+FAILED tests/test_publication_r5.py::test_r2_clock_contract[1:11-unknown-None-malformed_meridiem]
+FAILED tests/test_publication_r5.py::test_r2_clock_contract[not a clock--None-malformed_clock]
+FAILED tests/test_publication_r5.py::test_r2_clock_contract[--None-missing_clock]
+FAILED tests/test_publication_r5.py::test_r3_download_preserves_snapshot[hash]
+FAILED tests/test_publication_r5.py::test_r3_download_preserves_snapshot[network]
+FAILED tests/test_publication_r5.py::test_r3_download_preserves_snapshot[frozen]
+FAILED tests/test_publication_r5.py::test_r3_download_verified_swap - Asserti...
+FAILED tests/test_publication_r5.py::test_r4_quality_units - TypeError: write...
+FAILED tests/test_publication_r5.py::test_r5_threshold_policy - ImportError: ...
+FAILED tests/test_publication_r5.py::test_r6_plan_wrapper - AssertionError: a...
+FAILED tests/test_publication_r5.py::test_r7_organizational_schema - Assertio...
+FAILED tests/test_publication_r5.py::test_r8_bibliography_and_overlap - Asser...
+21 failed in 1.26s

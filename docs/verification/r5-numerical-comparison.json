@@ -1,0 +1,47 @@
+{
+  "headline_metrics_unchanged": true,
+  "metrics": [
+    {
+      "name": "spearman_trainval_vs_test_frequency",
+      "value": 0.8510400601120433,
+      "ci_low": 0.8301667350324364,
+      "ci_high": 0.8542824552823944,
+      "n": 171
+    },
+    {
+      "name": "rmse_rainfall_model_m3",
+      "value": 12210.42862764728,
+      "ci_low": 7100.54001574492,
+      "ci_high": 16489.147680687234,
+      "n": 1625
+    },
+    {
+      "name": "rmse_mean_volume_baseline_m3",
+      "value": 4801.301346029828,
+      "ci_low": 4454.000509466708,
+      "ci_high": 5197.980920804711,
+      "n": 1625
+    },
+    {
+      "name": "rain_threshold_positive_rate",
+      "value": 0.2404138770541692,
+      "ci_low": 0.22000912964090077,
+      "ci_high": 0.2608186244674376,
+      "n": 1643
+    }
+  ],
+  "corrected_clock_report_rows_by_meridiem": {
+    "PM": 709,
+    "AM": 66
+  },
+  "unresolved_clock_report_rows_by_reason": {
+    "malformed_clock": 198
+  },
+  "cohort_time_status_report_rows": {
+    "12_hour": 1380,
+    "24_hour": 15142,
+    "malformed_clock": 198
+  },
+  "normalized_sha256": "9748fa25fd49b79530f717323bf371195fbf7a5a4899aeeab0c6949643973f57",
+  "snapshot_sha256": "0e8a56ebf1870646431de7c1d326065fbcd9cd27f63132e0790e79eb5ef231c3"
+}

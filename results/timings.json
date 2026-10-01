@@ -1,0 +1,16 @@
+{
+  "download_s": 0.0,
+  "ingest_s": 0.3999321660012356,
+  "analysis_s": 12.025237333000405,
+  "output_s": 0.4196707500013872,
+  "total_s": 12.847915209000348,
+  "attribution": {
+    "source": "https://openamend.org/data/EEADP_CSO.csv",
+    "source_owner": "Massachusetts EEA / MassDEP; archived by AMEND",
+    "snapshot_sha256": "0e8a56ebf1870646431de7c1d326065fbcd9cd27f63132e0790e79eb5ef231c3",
+    "code_license": "Apache-2.0",
+    "design_license": "CC BY 4.0 (original documentation and figure design only)",
+    "data_rights": "Factual aggregate summaries; upstream rights remain with their owners.",
+    "disclosure": "No report identifiers or individual measurement pairs in public outputs."
+  }
+}

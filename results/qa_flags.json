@@ -1,0 +1,65 @@
+{
+  "attribution": {
+    "source": "https://openamend.org/data/EEADP_CSO.csv",
+    "source_owner": "Massachusetts EEA / MassDEP; archived by AMEND",
+    "snapshot_sha256": "0e8a56ebf1870646431de7c1d326065fbcd9cd27f63132e0790e79eb5ef231c3",
+    "code_license": "Apache-2.0",
+    "design_license": "CC BY 4.0 (original documentation and figure design only)",
+    "data_rights": "Factual aggregate summaries; upstream rights remain with their owners.",
+    "disclosure": "No report identifiers or individual measurement pairs in public outputs."
+  },
+  "flag_counts": {
+    "implausible_rainfall": 6,
+    "implausible_volume": 159,
+    "long_duration": 11,
+    "missing_rainfall": 78,
+    "missing_volume": 78,
+    "quarantined_from_fit": 176,
+    "unresolved_time": 198
+  },
+  "flag_definitions": {
+    "missing_volume": {
+      "unit": "identifiers",
+      "definition": "Identifiers with >50% of full-feed report rows missing volume"
+    },
+    "missing_rainfall": {
+      "unit": "identifiers",
+      "definition": "Identifiers with >50% of full-feed report rows missing rainfall"
+    },
+    "negative_volume": {
+      "unit": "report rows",
+      "definition": "Report rows with converted volume below zero"
+    },
+    "negative_rainfall": {
+      "unit": "report rows",
+      "definition": "Report rows with rainfall below zero"
+    },
+    "implausible_rainfall": {
+      "unit": "report rows",
+      "definition": "Report rows with rainfall above 254 mm"
+    },
+    "implausible_volume": {
+      "unit": "report rows",
+      "definition": "Report rows with volume above 10 million US gallons"
+    },
+    "long_duration": {
+      "unit": "report rows",
+      "definition": "Report rows with duration above 72 hours"
+    },
+    "quarantined_from_fit": {
+      "unit": "report rows",
+      "definition": "Report rows excluded by any plausibility filter"
+    },
+    "unresolved_time": {
+      "unit": "report rows",
+      "definition": "Report rows with missing, malformed, conflicting or ambiguous clocks"
+    }
+  },
+  "full_feed": {
+    "report_rows": 16720,
+    "identifiers": 171,
+    "missing_volume_or_rainfall_report_rows": 8058,
+    "unique_quarantined_report_rows": 176
+  },
+  "note": "Identifier missingness flags and report-row flags have separate units. Report-row flags overlap; their sum is not the unique excluded-row count. Missingness and unresolved clocks do not quarantine calendar-year analysis."
+}

@@ -1,0 +1,66 @@
+{
+  "attribution": {
+    "source": "https://openamend.org/data/EEADP_CSO.csv",
+    "source_owner": "Massachusetts EEA / MassDEP; archived by AMEND",
+    "snapshot_sha256": "0e8a56ebf1870646431de7c1d326065fbcd9cd27f63132e0790e79eb5ef231c3",
+    "code_license": "Apache-2.0",
+    "design_license": "CC BY 4.0 (original documentation and figure design only)",
+    "data_rights": "Factual aggregate summaries; upstream rights remain with their owners.",
+    "disclosure": "No report identifiers or individual measurement pairs in public outputs."
+  },
+  "train_years": [
+    2022,
+    2023
+  ],
+  "validation_year": 2024,
+  "test_year": 2025,
+  "metrics": [
+    {
+      "name": "spearman_trainval_vs_test_frequency",
+      "value": 0.8510400601120433,
+      "ci_low": 0.8301667350324364,
+      "ci_high": 0.8542824552823944,
+      "n": 171
+    },
+    {
+      "name": "rmse_rainfall_model_m3",
+      "value": 12210.42862764728,
+      "ci_low": 7100.54001574492,
+      "ci_high": 16489.147680687234,
+      "n": 1625
+    },
+    {
+      "name": "rmse_mean_volume_baseline_m3",
+      "value": 4801.301346029828,
+      "ci_low": 4454.000509466708,
+      "ci_high": 5197.980920804711,
+      "n": 1625
+    },
+    {
+      "name": "rain_threshold_positive_rate",
+      "value": 0.2404138770541692,
+      "ci_low": 0.22000912964090077,
+      "ci_high": 0.2608186244674376,
+      "n": 1643
+    }
+  ],
+  "baselines": [
+    {
+      "name": "event_count_ranking",
+      "command": "rank by raw event count per outfall (no rainfall model)",
+      "version": "cso-insight-baseline/1.0"
+    },
+    {
+      "name": "mean_volume_per_event",
+      "command": "predict arithmetic mean volume per outfall from train+validation",
+      "version": "cso-insight-baseline/1.0"
+    },
+    {
+      "name": "rainfall_threshold",
+      "command": "positive when rainfall is at or above training+validation 75th percentile; fewer than 3 training rainfall observations default negative",
+      "version": "cso-insight-baseline/1.0"
+    }
+  ],
+  "stop_rule_triggered": false,
+  "stop_rule_detail": ""
+}

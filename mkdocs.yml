@@ -1,0 +1,16 @@
+site_name: CSO Insight
+site_description: Data-driven analysis of combined sewer overflow discharges
+docs_dir: docs/site
+nav:
+  - Home: index.md
+  - Quick start: quickstart.md
+  - Technical report: technical-report.md
+  - Frozen analysis plan: PREREGISTRATION_STATUS.md
+  - Data manifest: data-manifest.md
+  - Results: results.md
+  - Licence: licence.md
+theme:
+  name: mkdocs
+markdown_extensions:
+  - toc:
+      permalink: true

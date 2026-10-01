@@ -1,0 +1,911 @@
+{
+  "attribution": {
+    "source": "https://openamend.org/data/EEADP_CSO.csv",
+    "source_owner": "Massachusetts EEA / MassDEP; archived by AMEND",
+    "snapshot_sha256": "0e8a56ebf1870646431de7c1d326065fbcd9cd27f63132e0790e79eb5ef231c3",
+    "code_license": "Apache-2.0",
+    "design_license": "CC BY 4.0 (original documentation and figure design only)",
+    "data_rights": "Factual aggregate summaries; upstream rights remain with their owners.",
+    "disclosure": "No report identifiers or individual measurement pairs in public outputs."
+  },
+  "estimand": "report rows, not distinct discharges",
+  "periods": {
+    "full_feed": {
+      "rows": 16720,
+      "eligible_rows": 16544,
+      "volume_cap_rows": 159,
+      "missing_volume_or_rainfall_rows": 8058,
+      "by_report_class": {
+        "Public Notification Report": {
+          "rows": 8059,
+          "missing_volume_or_rainfall_rows": 8058,
+          "eligible_rows": 8059
+        },
+        "Verified Data Report": {
+          "rows": 8661,
+          "missing_volume_or_rainfall_rows": 0,
+          "eligible_rows": 8485
+        }
+      }
+    },
+    "evaluation_2022_2025": {
+      "rows": 15292,
+      "eligible_rows": 15122,
+      "volume_cap_rows": 156,
+      "missing_volume_or_rainfall_rows": 7059,
+      "by_report_class": {
+        "Public Notification Report": {
+          "rows": 7060,
+          "missing_volume_or_rainfall_rows": 7059,
+          "eligible_rows": 7060
+        },
+        "Verified Data Report": {
+          "rows": 8232,
+          "missing_volume_or_rainfall_rows": 0,
+          "eligible_rows": 8062
+        }
+      }
+    },
+    "test_2025": {
+      "rows": 3105,
+      "eligible_rows": 3075,
+      "volume_cap_rows": 28,
+      "missing_volume_or_rainfall_rows": 1432,
+      "by_report_class": {
+        "Public Notification Report": {
+          "rows": 1432,
+          "missing_volume_or_rainfall_rows": 1432,
+          "eligible_rows": 1432
+        },
+        "Verified Data Report": {
+          "rows": 1673,
+          "missing_volume_or_rainfall_rows": 0,
+          "eligible_rows": 1643
+        }
+      }
+    }
+  },
+  "identifier_categories": {
+    "named": 169,
+    "unknown_buckets": [
+      "UNKNOWN_",
+      "UNKNOWN_MA0102997"
+    ]
+  },
+  "date_coverage_by_year": {
+    "2022": {
+      "rows": 2344,
+      "first_date": "2022-07-02",
+      "last_date": "2022-12-31"
+    },
+    "2023": {
+      "rows": 5809,
+      "first_date": "2023-01-01",
+      "last_date": "2023-12-29"
+    },
+    "2024": {
+      "rows": 4034,
+      "first_date": "2024-01-07",
+      "last_date": "2024-12-30"
+    },
+    "2025": {
+      "rows": 3105,
+      "first_date": "2025-01-01",
+      "last_date": "2025-12-29"
+    },
+    "2026": {
+      "rows": 1428,
+      "first_date": "2026-01-07",
+      "last_date": "2026-09-28"
+    }
+  },
+  "report_class_sensitivity": {
+    "eligible_counts_by_identifier": {
+      "BOS003": {
+        "all_classes": 90,
+        "verified_only": 45
+      },
+      "BOS004": {
+        "all_classes": 10,
+        "verified_only": 5
+      },
+      "BOS009": {
+        "all_classes": 61,
+        "verified_only": 34
+      },
+      "BOS010": {
+        "all_classes": 17,
+        "verified_only": 9
+      },
+      "BOS012": {
+        "all_classes": 6,
+        "verified_only": 4
+      },
+      "BOS013": {
+        "all_classes": 20,
+        "verified_only": 12
+      },
+      "BOS014": {
+        "all_classes": 12,
+        "verified_only": 7
+      },
+      "BOS017": {
+        "all_classes": 14,
+        "verified_only": 7
+      },
+      "BOS019": {
+        "all_classes": 23,
+        "verified_only": 12
+      },
+      "BOS046": {
+        "all_classes": 21,
+        "verified_only": 12
+      },
+      "BOS057": {
+        "all_classes": 7,
+        "verified_only": 4
+      },
+      "BOS060": {
+        "all_classes": 17,
+        "verified_only": 10
+      },
+      "BOS062": {
+        "all_classes": 36,
+        "verified_only": 18
+      },
+      "BOS064": {
+        "all_classes": 26,
+        "verified_only": 13
+      },
+      "BOS065": {
+        "all_classes": 18,
+        "verified_only": 10
+      },
+      "BOS068": {
+        "all_classes": 6,
+        "verified_only": 3
+      },
+      "BOS070": {
+        "all_classes": 129,
+        "verified_only": 74
+      },
+      "BOS073": {
+        "all_classes": 5,
+        "verified_only": 3
+      },
+      "BOS076": {
+        "all_classes": 12,
+        "verified_only": 7
+      },
+      "BOS078": {
+        "all_classes": 13,
+        "verified_only": 8
+      },
+      "BOS079": {
+        "all_classes": 1,
+        "verified_only": 1
+      },
+      "BOS080": {
+        "all_classes": 8,
+        "verified_only": 4
+      },
+      "CAM001": {
+        "all_classes": 6,
+        "verified_only": 3
+      },
+      "CAM005": {
+        "all_classes": 48,
+        "verified_only": 27
+      },
+      "CAM007": {
+        "all_classes": 9,
+        "verified_only": 4
+      },
+      "CAM017": {
+        "all_classes": 9,
+        "verified_only": 5
+      },
+      "CAM401A": {
+        "all_classes": 120,
+        "verified_only": 66
+      },
+      "CAM401B": {
+        "all_classes": 25,
+        "verified_only": 13
+      },
+      "CHE003": {
+        "all_classes": 1,
+        "verified_only": 1
+      },
+      "CHE004": {
+        "all_classes": 26,
+        "verified_only": 13
+      },
+      "CHE008": {
+        "all_classes": 41,
+        "verified_only": 22
+      },
+      "CHI03": {
+        "all_classes": 123,
+        "verified_only": 61
+      },
+      "CHI04": {
+        "all_classes": 65,
+        "verified_only": 32
+      },
+      "CHI05": {
+        "all_classes": 117,
+        "verified_only": 58
+      },
+      "CHI07": {
+        "all_classes": 129,
+        "verified_only": 63
+      },
+      "CHI08": {
+        "all_classes": 2,
+        "verified_only": 1
+      },
+      "CHI09": {
+        "all_classes": 55,
+        "verified_only": 27
+      },
+      "CHI24": {
+        "all_classes": 122,
+        "verified_only": 60
+      },
+      "CHI26": {
+        "all_classes": 40,
+        "verified_only": 20
+      },
+      "CHI27": {
+        "all_classes": 117,
+        "verified_only": 58
+      },
+      "CHI32B": {
+        "all_classes": 114,
+        "verified_only": 56
+      },
+      "CHI34": {
+        "all_classes": 102,
+        "verified_only": 50
+      },
+      "CHI37": {
+        "all_classes": 81,
+        "verified_only": 39
+      },
+      "CHI42": {
+        "all_classes": 12,
+        "verified_only": 6
+      },
+      "FAL002": {
+        "all_classes": 297,
+        "verified_only": 149
+      },
+      "FAL003": {
+        "all_classes": 33,
+        "verified_only": 16
+      },
+      "FAL004": {
+        "all_classes": 171,
+        "verified_only": 86
+      },
+      "FAL005": {
+        "all_classes": 8,
+        "verified_only": 4
+      },
+      "FAL006": {
+        "all_classes": 44,
+        "verified_only": 22
+      },
+      "FAL007": {
+        "all_classes": 16,
+        "verified_only": 8
+      },
+      "FAL008": {
+        "all_classes": 59,
+        "verified_only": 30
+      },
+      "FAL009": {
+        "all_classes": 31,
+        "verified_only": 16
+      },
+      "FAL010": {
+        "all_classes": 539,
+        "verified_only": 273
+      },
+      "FAL011": {
+        "all_classes": 559,
+        "verified_only": 279
+      },
+      "FAL013": {
+        "all_classes": 496,
+        "verified_only": 245
+      },
+      "FAL014": {
+        "all_classes": 274,
+        "verified_only": 137
+      },
+      "FAL019": {
+        "all_classes": 66,
+        "verified_only": 33
+      },
+      "FIT004": {
+        "all_classes": 8,
+        "verified_only": 4
+      },
+      "FIT010": {
+        "all_classes": 27,
+        "verified_only": 14
+      },
+      "FIT032": {
+        "all_classes": 151,
+        "verified_only": 77
+      },
+      "FIT041": {
+        "all_classes": 6,
+        "verified_only": 3
+      },
+      "FIT045A": {
+        "all_classes": 23,
+        "verified_only": 13
+      },
+      "FIT045B": {
+        "all_classes": 142,
+        "verified_only": 69
+      },
+      "FIT064": {
+        "all_classes": 77,
+        "verified_only": 39
+      },
+      "FIT076": {
+        "all_classes": 20,
+        "verified_only": 10
+      },
+      "FIT083": {
+        "all_classes": 26,
+        "verified_only": 12
+      },
+      "GLO004": {
+        "all_classes": 8,
+        "verified_only": 4
+      },
+      "GLO005": {
+        "all_classes": 8,
+        "verified_only": 3
+      },
+      "GLO006A": {
+        "all_classes": 21,
+        "verified_only": 10
+      },
+      "GLSD002": {
+        "all_classes": 33,
+        "verified_only": 16
+      },
+      "GLSD004": {
+        "all_classes": 56,
+        "verified_only": 25
+      },
+      "GLSD005": {
+        "all_classes": 11,
+        "verified_only": 5
+      },
+      "GLSD006": {
+        "all_classes": 20,
+        "verified_only": 10
+      },
+      "HAV013": {
+        "all_classes": 34,
+        "verified_only": 17
+      },
+      "HAV019": {
+        "all_classes": 6,
+        "verified_only": 3
+      },
+      "HAV021A": {
+        "all_classes": 63,
+        "verified_only": 31
+      },
+      "HAV021B": {
+        "all_classes": 4,
+        "verified_only": 2
+      },
+      "HAV021F": {
+        "all_classes": 227,
+        "verified_only": 112
+      },
+      "HAV021H": {
+        "all_classes": 152,
+        "verified_only": 76
+      },
+      "HAV024": {
+        "all_classes": 30,
+        "verified_only": 15
+      },
+      "HAV032": {
+        "all_classes": 28,
+        "verified_only": 14
+      },
+      "HAV034": {
+        "all_classes": 73,
+        "verified_only": 37
+      },
+      "HAV038": {
+        "all_classes": 8,
+        "verified_only": 4
+      },
+      "HAV039": {
+        "all_classes": 32,
+        "verified_only": 16
+      },
+      "HAV040": {
+        "all_classes": 69,
+        "verified_only": 35
+      },
+      "HAV041": {
+        "all_classes": 66,
+        "verified_only": 33
+      },
+      "HOL016": {
+        "all_classes": 50,
+        "verified_only": 45
+      },
+      "HOL018": {
+        "all_classes": 249,
+        "verified_only": 210
+      },
+      "HOL019": {
+        "all_classes": 99,
+        "verified_only": 88
+      },
+      "HOL02": {
+        "all_classes": 103,
+        "verified_only": 90
+      },
+      "HOL020": {
+        "all_classes": 219,
+        "verified_only": 183
+      },
+      "HOL021": {
+        "all_classes": 193,
+        "verified_only": 163
+      },
+      "HOL023": {
+        "all_classes": 118,
+        "verified_only": 101
+      },
+      "HOL07": {
+        "all_classes": 94,
+        "verified_only": 83
+      },
+      "HOL08": {
+        "all_classes": 169,
+        "verified_only": 145
+      },
+      "HOL09": {
+        "all_classes": 119,
+        "verified_only": 99
+      },
+      "LOW002": {
+        "all_classes": 56,
+        "verified_only": 27
+      },
+      "LOW007": {
+        "all_classes": 106,
+        "verified_only": 53
+      },
+      "LOW008": {
+        "all_classes": 136,
+        "verified_only": 59
+      },
+      "LOW011": {
+        "all_classes": 25,
+        "verified_only": 13
+      },
+      "LOW020": {
+        "all_classes": 116,
+        "verified_only": 54
+      },
+      "LOW027": {
+        "all_classes": 143,
+        "verified_only": 70
+      },
+      "LOW030-1": {
+        "all_classes": 102,
+        "verified_only": 47
+      },
+      "LOW030-2": {
+        "all_classes": 140,
+        "verified_only": 62
+      },
+      "LYNN003": {
+        "all_classes": 189,
+        "verified_only": 92
+      },
+      "LYNN004": {
+        "all_classes": 147,
+        "verified_only": 73
+      },
+      "LYNN005": {
+        "all_classes": 148,
+        "verified_only": 73
+      },
+      "LYNN006": {
+        "all_classes": 14,
+        "verified_only": 7
+      },
+      "MON001": {
+        "all_classes": 95,
+        "verified_only": 41
+      },
+      "MON002": {
+        "all_classes": 124,
+        "verified_only": 63
+      },
+      "MWR003": {
+        "all_classes": 7,
+        "verified_only": 4
+      },
+      "MWR010": {
+        "all_classes": 1,
+        "verified_only": 1
+      },
+      "MWR018": {
+        "all_classes": 10,
+        "verified_only": 5
+      },
+      "MWR019": {
+        "all_classes": 8,
+        "verified_only": 5
+      },
+      "MWR020": {
+        "all_classes": 8,
+        "verified_only": 5
+      },
+      "MWR023": {
+        "all_classes": 16,
+        "verified_only": 9
+      },
+      "MWR201": {
+        "all_classes": 23,
+        "verified_only": 9
+      },
+      "MWR203": {
+        "all_classes": 56,
+        "verified_only": 16
+      },
+      "MWR205": {
+        "all_classes": 182,
+        "verified_only": 86
+      },
+      "NEW003": {
+        "all_classes": 555,
+        "verified_only": 275
+      },
+      "NEW004": {
+        "all_classes": 24,
+        "verified_only": 11
+      },
+      "NEW005": {
+        "all_classes": 102,
+        "verified_only": 51
+      },
+      "NEW006": {
+        "all_classes": 120,
+        "verified_only": 60
+      },
+      "NEW007": {
+        "all_classes": 29,
+        "verified_only": 14
+      },
+      "NEW008": {
+        "all_classes": 66,
+        "verified_only": 32
+      },
+      "NEW009": {
+        "all_classes": 1,
+        "verified_only": 1
+      },
+      "NEW010": {
+        "all_classes": 41,
+        "verified_only": 21
+      },
+      "NEW012": {
+        "all_classes": 24,
+        "verified_only": 13
+      },
+      "NEW013": {
+        "all_classes": 30,
+        "verified_only": 15
+      },
+      "NEW016": {
+        "all_classes": 60,
+        "verified_only": 30
+      },
+      "NEW017": {
+        "all_classes": 180,
+        "verified_only": 87
+      },
+      "NEW018": {
+        "all_classes": 266,
+        "verified_only": 134
+      },
+      "NEW022": {
+        "all_classes": 60,
+        "verified_only": 31
+      },
+      "NEW023": {
+        "all_classes": 494,
+        "verified_only": 239
+      },
+      "NEW026": {
+        "all_classes": 5,
+        "verified_only": 2
+      },
+      "NEW027": {
+        "all_classes": 247,
+        "verified_only": 125
+      },
+      "NEW030": {
+        "all_classes": 2,
+        "verified_only": 1
+      },
+      "NEW031": {
+        "all_classes": 331,
+        "verified_only": 165
+      },
+      "NEW035": {
+        "all_classes": 372,
+        "verified_only": 184
+      },
+      "NEW036": {
+        "all_classes": 116,
+        "verified_only": 57
+      },
+      "NEW041": {
+        "all_classes": 12,
+        "verified_only": 6
+      },
+      "SOM001A": {
+        "all_classes": 44,
+        "verified_only": 23
+      },
+      "SOM007A/MWR205A": {
+        "all_classes": 54,
+        "verified_only": 27
+      },
+      "SPR007": {
+        "all_classes": 22,
+        "verified_only": 11
+      },
+      "SPR008": {
+        "all_classes": 52,
+        "verified_only": 29
+      },
+      "SPR010": {
+        "all_classes": 276,
+        "verified_only": 138
+      },
+      "SPR011": {
+        "all_classes": 23,
+        "verified_only": 12
+      },
+      "SPR012": {
+        "all_classes": 308,
+        "verified_only": 154
+      },
+      "SPR013": {
+        "all_classes": 165,
+        "verified_only": 82
+      },
+      "SPR014": {
+        "all_classes": 255,
+        "verified_only": 131
+      },
+      "SPR015A": {
+        "all_classes": 75,
+        "verified_only": 45
+      },
+      "SPR015B": {
+        "all_classes": 57,
+        "verified_only": 29
+      },
+      "SPR016": {
+        "all_classes": 131,
+        "verified_only": 67
+      },
+      "SPR017": {
+        "all_classes": 49,
+        "verified_only": 29
+      },
+      "SPR018": {
+        "all_classes": 79,
+        "verified_only": 41
+      },
+      "SPR019": {
+        "all_classes": 27,
+        "verified_only": 13
+      },
+      "SPR024": {
+        "all_classes": 9,
+        "verified_only": 6
+      },
+      "SPR025": {
+        "all_classes": 83,
+        "verified_only": 51
+      },
+      "SPR034": {
+        "all_classes": 89,
+        "verified_only": 46
+      },
+      "SPR035": {
+        "all_classes": 57,
+        "verified_only": 30
+      },
+      "SPR036A": {
+        "all_classes": 48,
+        "verified_only": 28
+      },
+      "SPR037": {
+        "all_classes": 30,
+        "verified_only": 17
+      },
+      "SPR042": {
+        "all_classes": 162,
+        "verified_only": 74
+      },
+      "SPR045": {
+        "all_classes": 102,
+        "verified_only": 56
+      },
+      "SPR046": {
+        "all_classes": 140,
+        "verified_only": 76
+      },
+      "SPR048": {
+        "all_classes": 86,
+        "verified_only": 48
+      },
+      "SPR049": {
+        "all_classes": 201,
+        "verified_only": 98
+      },
+      "TAU004": {
+        "all_classes": 18,
+        "verified_only": 9
+      },
+      "UNKNOWN_": {
+        "all_classes": 1,
+        "verified_only": 0
+      },
+      "UNKNOWN_MA0102997": {
+        "all_classes": 1,
+        "verified_only": 0
+      },
+      "WOR001": {
+        "all_classes": 138,
+        "verified_only": 63
+      }
+    },
+    "observed_spearman_all_classes": 0.8510400601120433,
+    "observed_spearman_verified_only": 0.8563977796934136,
+    "note": "Sensitivity only; stages have not been reconciled into physical discharges."
+  },
+  "model_support": {
+    "eligible_test_rows": 3075,
+    "paired_rows": 1643,
+    "scored_rows": 1625,
+    "excluded_reason_counts": {
+      "no_training_model": 18
+    },
+    "excluded_counts_by_identifier": {
+      "BOS004": 1,
+      "BOS010": 5,
+      "BOS057": 1,
+      "BOS068": 1,
+      "BOS073": 1,
+      "CHI42": 2,
+      "FAL005": 3,
+      "FIT041": 2,
+      "HAV038": 1,
+      "NEW026": 1
+    },
+    "rule": "Five training+validation pairs and variable rain; same rows for baseline."
+  },
+  "threshold_support": {
+    "unit": "report rows",
+    "known_rainfall_test_rows": 1643,
+    "supported_test_rows": 1635,
+    "default_negative_test_rows": 8,
+    "default_negative_identifier_count": 5,
+    "default_negative_rows_by_identifier": {
+      "BOS068": 1,
+      "BOS073": 1,
+      "FAL005": 3,
+      "FIT041": 2,
+      "NEW026": 1
+    },
+    "rule": "At or above training+validation 75th percentile; >=3 eligible rainfall observations required; otherwise default negative. Missing test rainfall excluded."
+  },
+  "time_status_report_rows": {
+    "12_hour": 1380,
+    "24_hour": 15142,
+    "malformed_clock": 198
+  },
+  "total_cso_rows": 16720,
+  "fit_eligible_rows": 16544,
+  "evaluation_year_eligible_rows": 15122,
+  "test_year_2025_eligible_rows": 3075,
+  "test_year_2025_paired_rows": 1643,
+  "total_reported_volume_m3": 37432163.30581154,
+  "evaluation_eligible_reported_volume_m3": 24547791.584751472,
+  "volume_cap_m3": 37854.0,
+  "volume_cap_gallons": 9999973.582782315,
+  "exclusions_by_reason": [
+    {
+      "reason": "rainfall_above_cap",
+      "row_count": 6,
+      "reported_volume_m3": 7094.1536019800005
+    },
+    {
+      "reason": "volume_above_cap",
+      "row_count": 159,
+      "reported_volume_m3": 11753902.140380146
+    },
+    {
+      "reason": "duration_above_72h",
+      "row_count": 11,
+      "reported_volume_m3": 90075.57980942001
+    }
+  ],
+  "volume_cap_sensitivity": {
+    "capped_total_reported_volume_m3": 24547791.584751472,
+    "uncapped_total_reported_volume_m3": 36137656.90446626,
+    "volume_removed_by_cap_m3": 11589865.319714785,
+    "volume_removed_fraction": 0.3207143548446936,
+    "top5_volume_outfalls_with_cap": [
+      {
+        "outfall_id": "NEW023",
+        "point_estimate_m3": 1901175.7482317593
+      },
+      {
+        "outfall_id": "FAL013",
+        "point_estimate_m3": 1214490.1095033595
+      },
+      {
+        "outfall_id": "HOL09",
+        "point_estimate_m3": 1161182.0883200003
+      },
+      {
+        "outfall_id": "FAL011",
+        "point_estimate_m3": 1074540.9693640699
+      },
+      {
+        "outfall_id": "SPR010",
+        "point_estimate_m3": 893045.2207569996
+      }
+    ],
+    "top5_volume_outfalls_without_cap": [
+      {
+        "outfall_id": "MWR203",
+        "point_estimate_m3": 2887548.6020999993
+      },
+      {
+        "outfall_id": "NEW023",
+        "point_estimate_m3": 2609163.2517777593
+      },
+      {
+        "outfall_id": "HOL09",
+        "point_estimate_m3": 2166420.426280001
+      },
+      {
+        "outfall_id": "WOR001",
+        "point_estimate_m3": 2132400.49614621
+      },
+      {
+        "outfall_id": "LOW008",
+        "point_estimate_m3": 1556106.3428000002
+      }
+    ]
+  },
+  "estimand_note": "All reporting classes retained; multiple reports may describe one physical overflow. Descriptive rankings and headline evaluation use fit-eligible report rows only. Events above the volume cap are excluded from these totals, not relabelled."
+}
