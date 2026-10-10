@@ -96,3 +96,32 @@ Metro Vancouver publishes a [real-time overflow map](https://metrovancouver.org/
 Supported reproducible installation: Python 3.11 and 3.12 with the pinned lock. Other versions are not covered by this installation contract. Peak memory has not been measured. Local checks do not constitute a remote CI receipt.
 
 Code: Apache-2.0 (see [LICENSE](LICENSE)). Original documentation and figure design in `results/figures/`: [CC BY 4.0](docs/LICENSE-CC-BY-4.0.txt) with source attribution in report captions.
+
+## Record-linking and comparison tools
+
+The offline tools link compatible notification and verified report rows into candidate
+records, compare coarse and one-to-one rules, apply two sensitivity vetoes, and check
+tolerance changes. These software decisions do not establish physical discharge
+identity, measured accuracy, review savings or water benefit.
+
+Run the original synthetic example without installation or network access:
+
+```bash
+PYTHONPATH=src python3 -m cso_insight.release_cli --compare
+PYTHONPATH=src python3 -m cso_insight.release_cli --tolerance 30 --compare
+```
+
+After installation, `cso-insight-linkage` provides the same interface. The example uses
+six invented rows and prints aggregates only. The two-veto comparator stays at 15
+minutes when the linker's tolerance changes. `--input /path/to/local.csv` accepts
+independently rights-held local data; detailed exports require separate review.
+`cso-insight score-linkage` scores a local review sheet against its pinned manifest.
+
+This addition includes code and synthetic tests. It withholds the linkage study's
+source rows, report and incident identifiers, permittee and outfall values, actual
+source clocks, individual measurements, detailed review HTML, ledgers and reviewer
+sheets because those assets require separate rights and publication approval.
+The existing public baseline documentation and aggregate results remain available.
+Synthetic tests cannot reproduce the 18,759-row linkage study without its exact,
+separately rights-held snapshot. Code is Apache-2.0; original documentation uses
+[CC BY 4.0](docs/LICENSE-CC-BY-4.0.txt). No upstream records are relicensed.

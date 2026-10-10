@@ -147,3 +147,13 @@ def iter_cso_records(path: Path) -> Iterator[CsoRecord]:
 def load_cso_records(path: Path) -> list[CsoRecord]:
     """Load all CSO records into memory (dataset is bounded)."""
     return list(iter_cso_records(path))
+
+
+def parse_incident_date(value: str) -> date:
+    """Parse the incident calendar date for additive source adapters."""
+    return _parse_date_part(value)
+
+
+def parse_incident_clock(value: str, am_pm: str = "") -> tuple[time | None, str]:
+    """Expose the existing clock rules without changing baseline ingestion."""
+    return _parse_time_part(value, am_pm)

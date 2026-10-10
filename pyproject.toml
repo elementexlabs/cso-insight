@@ -47,6 +47,7 @@ docs = [
 
 [project.scripts]
 cso-insight = "cso_insight.cli:main"
+cso-insight-linkage = "cso_insight.release_cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/cso_insight"]

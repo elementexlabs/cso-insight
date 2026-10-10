@@ -1,0 +1,8 @@
+Copyright 2026 ElementeX Labs Inc.
+Code: Apache-2.0. Original documentation: CC BY 4.0
+(see docs/LICENSE-CC-BY-4.0.txt).
+2026-10-10 additive record-linking and comparison tools:
+cli.py, ingest.py, pyproject.toml and README.md extended for local linking and review.
+comparison.py, fair_comparison.py and sensitivity_veto.py use portable aggregate-only
+report recipes; no linkage source records or detailed review pages are included.
+Upstream rights remain with their owners.
