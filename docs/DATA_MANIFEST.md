@@ -18,7 +18,12 @@ attribution. They are not independently verified physical discharges.
 
 The [AMEND dataset page](https://openamend.org/data/) describes a freely distributed
 public-source database (checked 2026-10-01). No separate dataset-specific licence was
-found in the reviewed page. The [MassDEP policies](https://www.mass.gov/info-details/massdep-site-policies)
+found in the reviewed page. A second check on 2026-10-11 found none either: the AMEND data page
+and its about page state no licence, and the project's source repository
+([nesanders/MAenvironmentaldata](https://github.com/nesanders/MAenvironmentaldata)) declares none
+(GitHub repository licence field empty and no licence file, read 2026-10-11 00:35 PT).
+We therefore treat the AMEND files as unlicensed copies of Massachusetts public records:
+this repository ships no AMEND file, only the derived aggregates listed below, with attribution. The [MassDEP policies](https://www.mass.gov/info-details/massdep-site-policies)
 provide a public-record reuse basis with copyright exceptions; direct access on
 2026-10-01 returned 403, so no new blanket permission verification is asserted.
 The exact shipped fields are computed counts by class/year/identifier, summed volumes,
