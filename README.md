@@ -7,10 +7,18 @@ Reported priorities change under the volume cap, and the simple mean-volume base
 beats the rainfall model. Better reporting and local validation are prerequisites
 for deployment. This supplies no firm client reference or operational validation.
 
-Verification receipts: [round 5 local checks](docs/LOCAL_CHECKS_R5.json),
-[regression and regeneration receipts](docs/verification/R5_RECEIPTS.md), and
-[generated results](RESULTS.md). The independent review remains local-only; these
-receipts record repairs and checks, without implying a new independent approval.
+Verification covers timestamp parsing, snapshot preservation, measurement units,
+cohort denominators, threshold support and reproducible analytical outputs.
+See [tests/test_publication_fixes.py](tests/test_publication_fixes.py) and
+[tests/test_coverage_gaps.py](tests/test_coverage_gaps.py) for timestamp parsing,
+[tests/test_publication_r5.py](tests/test_publication_r5.py) for snapshot preservation,
+units and the threshold policy, [tests/test_ingest.py](tests/test_ingest.py) for unit
+conversion, and [tests/test_publication_r4.py](tests/test_publication_r4.py) for cohort
+denominators, model support and metric reproduction. The analytical results are in
+[generated results](RESULTS.md), the [cohort summary](results/cohort_summary.json) and
+the [evaluation metrics](results/evaluation.json).
+These checks do not establish independent approval, remote CI validation or
+operational readiness.
 
 ## Case study (Massachusetts EEA, hold-out 2025)
 
@@ -46,7 +54,7 @@ Open `results/report.html` for the engineer summary. See `RESULTS.md` for code-g
 
 Bounded engineering contribution: an integrated open Python work sample that ingests Massachusetts notification CSVs, flags data quality issues, fits per-outfall log1p rainfall-response models, produces descriptive rankings with bootstrap intervals on counts/volumes, and evaluates amended hold-out baselines in one command.
 
-This package offers a packaged strict-typed API, an explicit cohort ledger, an amended held-out comparison and declared stop checks. It makes no claim of a new rainfall-CSO method. AMEND already has tests and automated chart regeneration. Its [analysis/EEA_DP_CSO_map.py](https://github.com/nesanders/MAenvironmentaldata/blob/b0a5c729abb41ba77b24ec0f6df835eee0a5887f/analysis/EEA_DP_CSO_map.py), [tests](https://github.com/nesanders/MAenvironmentaldata/tree/b0a5c729abb41ba77b24ec0f6df835eee0a5887f/tests), and [workflows](https://github.com/nesanders/MAenvironmentaldata/tree/b0a5c729abb41ba77b24ec0f6df835eee0a5887f/.github/workflows) were reviewed on 2026-10-01 (immutable commit `b0a5c729abb41ba77b24ec0f6df835eee0a5887f`, identified by the independent round 4 review; links pinned here). Comparisons are bounded to those paths; no absence-of-capability claims are made.
+This package offers a packaged strict-typed API, an explicit cohort ledger, an amended held-out comparison and declared stop checks. It makes no claim of a new rainfall-CSO method. AMEND already has tests and automated chart regeneration. Its [analysis/EEA_DP_CSO_map.py](https://github.com/nesanders/MAenvironmentaldata/blob/b0a5c729abb41ba77b24ec0f6df835eee0a5887f/analysis/EEA_DP_CSO_map.py), [tests](https://github.com/nesanders/MAenvironmentaldata/tree/b0a5c729abb41ba77b24ec0f6df835eee0a5887f/tests), and [workflows](https://github.com/nesanders/MAenvironmentaldata/tree/b0a5c729abb41ba77b24ec0f6df835eee0a5887f/.github/workflows) were reviewed on 2026-10-01 (immutable commit `b0a5c729abb41ba77b24ec0f6df835eee0a5887f`; links pinned here). Comparisons are bounded to those paths; no absence-of-capability claims are made.
 
 Pairing utility co-reported fields here involves no external meteorological join. AMEND also performs external weather alignment. SWMM and PySWMM provide hydraulic simulation and a simulation interface, respectively.
 
@@ -93,7 +101,7 @@ Metro Vancouver publishes a [real-time overflow map](https://metrovancouver.org/
 
 ## Licence
 
-Supported reproducible installation: Python 3.11 and 3.12 with the pinned lock. Other versions are not covered by this installation contract. Peak memory has not been measured. Local checks do not constitute a remote CI receipt.
+Supported reproducible installation: Python 3.11 and 3.12 with the pinned lock. Other versions are not covered by this installation contract. Peak memory has not been measured. Remote CI validation is not established by the checks described here.
 
 Code: Apache-2.0 (see [LICENSE](LICENSE)). Original documentation and figure design in `results/figures/`: [CC BY 4.0](docs/LICENSE-CC-BY-4.0.txt) with source attribution in report captions.
 
