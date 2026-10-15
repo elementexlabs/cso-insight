@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Technical report - CSO Insight</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">CSO Insight</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../quickstart/" class="nav-link">Quick start</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Technical report</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../PREREGISTRATION_STATUS/" class="nav-link">Frozen analysis plan</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../data-manifest/" class="nav-link">Data manifest</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../results/" class="nav-link">Results</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../licence/" class="nav-link">Licence</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../quickstart/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../PREREGISTRATION_STATUS/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#technical-report-cso-insight" class="nav-link">Technical report: CSO Insight</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#abstract" class="nav-link">Abstract</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#1-problem" class="nav-link">1. Problem</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-related-work" class="nav-link">2. Related work</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-data" class="nav-link">3. Data</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#4-methods" class="nav-link">4. Methods</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#5-results" class="nav-link">5. Results</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#6-limitations" class="nav-link">6. Limitations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#7-reproducibility" class="nav-link">7. Reproducibility</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#references" class="nav-link">References</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#regional-validation-checklist" class="nav-link">Regional validation checklist</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="technical-report-cso-insight">Technical report: CSO Insight<a class="headerlink" href="#technical-report-cso-insight" title="Permanent link">&para;</a></h1>
+<h2 id="abstract">Abstract<a class="headerlink" href="#abstract" title="Permanent link">&para;</a></h2>
+<p>We present an open Python pipeline that ingests public combined sewer overflow (CSO) report-row data, aligns co-reported rainfall, flags implausible values, fits per-outfall log1p rainfall-response models, ranks outfalls descriptively with bootstrap uncertainty on counts and volumes, and evaluates amended hold-out baselines. The frozen analysis plan is amended retrospectively; pre-result registration is unverified, and results were seen before the 2026-10-01 amendment clarified estimands. Rainfall-normalized outfall ranking was not evaluated.</p>
+<h2 id="1-problem">1. Problem<a class="headerlink" href="#1-problem" title="Permanent link">&para;</a></h2>
+<p>Combined sewer systems discharge diluted wastewater during wet weather. Utilities must monitor overflows, report trends, and prioritize outfalls for intervention. Metro Vancouver publishes a real-time overflow map; this demonstration uses Massachusetts data and makes no claim about other local data routes. Analysts need reproducible methods that work on whatever open data exists.</p>
+<h2 id="2-related-work">2. Related work<a class="headerlink" href="#2-related-work" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>EPA SWMM</strong> (<a href="https://www.epa.gov/water-research/storm-water-management-model-swmm">epa.gov</a>): physics-based simulation requiring local network models.</li>
+<li><strong>PySWMM</strong> (<a href="https://joss.theoj.org/papers/10.21105/joss.02292">JOSS 10.21105/joss.02292</a>): Python interface to SWMM engines.</li>
+<li><strong>McGrath et al. (2019)</strong>: network topology and rainfall controls on CSO variability, <a href="https://doi.org/10.1029/2019WR025336">doi:10.1029/2019WR025336</a>.</li>
+<li><strong>AMEND dashboard</strong> (<a href="https://openamend.org/dashboard.html">openamend.org/dashboard.html</a>): CSV-backed discharge analysis, external rainfall alignment and reporting-quality views on the Massachusetts feed.</li>
+<li><strong>Regulatory reporting</strong>: EPA ECHO sewer overflow CSVs (partial US coverage).</li>
+</ul>
+<p>AMEND already has Python tests and automated chart regeneration; see its <a href="https://github.com/nesanders/MAenvironmentaldata/blob/b0a5c729abb41ba77b24ec0f6df835eee0a5887f/analysis/EEA_DP_CSO_map.py">analysis script</a>, <a href="https://github.com/nesanders/MAenvironmentaldata/tree/b0a5c729abb41ba77b24ec0f6df835eee0a5887f/tests">tests</a> and <a href="https://github.com/nesanders/MAenvironmentaldata/tree/b0a5c729abb41ba77b24ec0f6df835eee0a5887f/.github/workflows">workflows</a> at immutable commit <code>b0a5c729abb41ba77b24ec0f6df835eee0a5887f</code> (identified by the independent round 4 review; links pinned here). This package performs no external meteorological join.</p>
+<p>This package integrates notification ingestion, QA quarantine, descriptive ranking, cohort accounting and amended hold-out evaluation in one reproducible command. AMEND and this package overlap in report aggregation and plotting. This library complements AMEND's analysis with its packaged typed API, explicit cohort ledger and amended evaluation; hydraulic simulation remains a separate task.</p>
+<h2 id="3-data">3. Data<a class="headerlink" href="#3-data" title="Permanent link">&para;</a></h2>
+<p><strong>Primary:</strong> Massachusetts EEA CSO notifications (<code>https://openamend.org/data/EEADP_CSO.csv</code>). See <code>docs/DATA_MANIFEST.md</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Statistic</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSO rows</td>
+<td>16,720</td>
+</tr>
+<tr>
+<td>Distinct outfall IDs</td>
+<td>171 (169 named plus two synthetic UNKNOWN buckets)</td>
+</tr>
+<tr>
+<td>Evaluation years</td>
+<td>2022 to 2025 (2026 partial, excluded; 2022 begins July 2)</td>
+</tr>
+<tr>
+<td>Rows with volume and rainfall (eligible)</td>
+<td>see <code>results/cohort_summary.json</code></td>
+</tr>
+</tbody>
+</table>
+<p>Rainfall is co-reported in inches (<code>rainfallData</code>); volume in US gallons (<code>volumnOfEvent</code>). These are utility-reported fields, not independently verified labels. Both notification and verified reporting stages are retained; matching stages are not reconciled into distinct discharges. All count results concern report rows. Missingness is structured by reporting stage: 8,058 of 8,059 notification-stage rows lack one or both measurements; no verified-stage rows do in this snapshot. The ledger exports period/class denominators, date ranges, and verified-only count sensitivity. UNKNOWN identifiers pool missing outfall IDs by permittee; they are not physical outfalls.</p>
+<p><strong>Metro Vancouver:</strong> Real-time map only via the route reviewed; annual PDF tables. Documented as regional context; not used as primary data.</p>
+<h2 id="4-methods">4. Methods<a class="headerlink" href="#4-methods" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Cleaning:</strong> Convert gallons to m3, inches to mm; parse treatment categories explicitly. Honor AM/PM (12 AM midnight, 12 PM noon); valid unmarked clocks use 24-hour time. Consistent 13-23 PM and 0 AM retain their 24-hour meaning. Ambiguous 0 PM, conflicting 13-23 AM, missing/malformed clocks and unknown markers remain null and are flagged; the separate date is retained. No time-zone or weather-time join is asserted.</li>
+<li><strong>Quarantine:</strong> Exclude events with rainfall above 254 mm (10 inches), volume above 37,854 m3 (10 million US gallons), negative values, or duration above 72 h from fitting and headline descriptive totals. These are declared plausibility filters, not verified error labels. Exclusion counts and volume sensitivity are exported to <code>results/cohort_summary.json</code>.</li>
+<li><strong>Alignment:</strong> Retain eligible events with both volume and rainfall for modelling.</li>
+<li><strong>Rainfall response:</strong> Per outfall, fit log1p(volume) ~ rainfall via OLS (minimum 5 pairs).</li>
+<li><strong>Descriptive ranking:</strong> Bootstrap resample events (500 draws, seed 42); rank by observed report-row count and observed reported volume with intervals on those metrics (not rank positions, not rainfall-normalized).</li>
+<li><strong>Quality flags:</strong> Missingness, implausible values, quarantine status; aggregate flag counts in <code>results/qa_flags.json</code> with a unit and definition for every flag. Missingness counts are identifiers with &gt;50% missing within-identifier measurements (78 for each measurement); other flags count report rows. Separate HTML tables prevent mixing units. The full feed contains 16,720 report rows, with 8,058 missing volume or rainfall and 176 unique quarantined rows. Report-row flags overlap; their sum is not a unique exclusion count. Individual identifiers and measurements are withheld.</li>
+<li><strong>Evaluation:</strong> Train 2022 to 2023, validation 2024 (pooled with train for fitting), test 2025. Pooled RMSE on identical model-scorable paired report rows; Spearman over outfall union with event-level bootstrap resampling train+validation events while holding 2025 counts fixed.</li>
+</ol>
+<h2 id="5-results">5. Results<a class="headerlink" href="#5-results" title="Permanent link">&para;</a></h2>
+<p>See <code>RESULTS.md</code> (regenerated by <code>cso-insight run --root .</code>).</p>
+<p>The mean-volume baseline achieves lower pooled RMSE than the log1p rainfall model on held-out paired events. Spearman correlation compares raw event counts, not rainfall-normalized ranks. Rain threshold is an event-conditional positive rate among events with known rainfall; positive means at or above the 2022-2024 training 75th percentile, with at least three eligible training rainfall observations. Of 1,643 eligible known-rainfall test rows, 1,635 are supported; eight rows across five identifiers default negative and stay in the denominator. Missing test rainfall is excluded. Five rows equal the threshold; the fraction is 395/1,643. It does not measure overflow detection or accuracy on non-event days.</p>
+<p>Scoring covers 1,625 of 1,643 eligible paired test reports and 1,625 of 3,075 eligible test reports. Eighteen paired reports across ten IDs have no supported training model. Support exclusions are exported; the baseline is evaluated on the same subset. Minimum five pairs and variable training rainfall are required.</p>
+<h2 id="6-limitations">6. Limitations<a class="headerlink" href="#6-limitations" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Not Metro Vancouver data; transfer requires local validation.</li>
+<li>Missing measurements on many rows; descriptive totals reflect reporting coverage.</li>
+<li>Volume cap excludes 156 evaluation-period reports (159 full feed), removing 32.1% of 2022-2025 reported volume after other eligibility rules relative to the same cohort without the volume cap. It can change top-five volume priorities; see capped/uncapped ranks in the cohort ledger.</li>
+<li>Log1p-linear model ignores antecedent moisture and system hydraulics; inverse transform can extrapolate beyond observed volumes.</li>
+<li>Bootstrap intervals treat events as independent; storm-date clustering is not modelled.</li>
+<li>Intervals omit fitting uncertainty and measurement error.</li>
+<li>Notification timestamps may lag actual overflow start.</li>
+<li>2026 partial year excluded but present in raw feed.</li>
+<li>Preregistration was amended after results were seen.</li>
+</ul>
+<h2 id="7-reproducibility">7. Reproducibility<a class="headerlink" href="#7-reproducibility" title="Permanent link">&para;</a></h2>
+<pre><code class="language-bash">pip install -r requirements-lock.txt
+pip install --no-deps -e .
+./scripts/download_data.sh
+cso-insight run --root .
+</code></pre>
+<p>Preregistration SHA-256: see <code>docs/PREREGISTRATION.sha256</code>. Amendment after review: <code>docs/PREREGISTRATION_AMENDMENT_2026-10-01.md</code>.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ol>
+<li>McGrath, G., et al. (2019). Network Topology and Rainfall Controls on the Variability of Combined Sewer Overflows and Loads. <em>Water Resources Research</em>. https://doi.org/10.1029/2019WR025336</li>
+<li>EPA SWMM. https://www.epa.gov/water-research/storm-water-management-model-swmm</li>
+<li>McDonnell et al. (2020). PySWMM. https://doi.org/10.21105/joss.02292</li>
+<li>Massachusetts EEA CSO feed. https://openamend.org/data/EEADP_CSO.csv</li>
+<li>AMEND dashboard. https://openamend.org/dashboard.html</li>
+<li>Metro Vancouver sewer overflow map. https://metrovancouver.org/services/liquid-waste/real-time-sewer-overflow-map</li>
+</ol>
+<h2 id="regional-validation-checklist">Regional validation checklist<a class="headerlink" href="#regional-validation-checklist" title="Permanent link">&para;</a></h2>
+<p>Before applying these methods to a regional agency: obtain a permitted local feed;
+define reporting-stage reconciliation with the data owner; verify units, timestamps,
+unknown identifiers and completeness; predeclare filters and storm-level validation;
+compare against a simple baseline on the same supported cohort; and validate the
+actual decision with utility engineers. This work supplies no firm client reference,
+Metro Vancouver validation, or operational forecast.</p>
+<p>The frozen plan hash verifies content integrity and does not establish chronology.
+See <a href="../PREREGISTRATION_STATUS/">frozen analysis plan, amended retrospectively</a> for the default wrapper and recorded amendments. Original figure design and
+text are CC BY 4.0; factual source aggregates retain the upstream rights boundary.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

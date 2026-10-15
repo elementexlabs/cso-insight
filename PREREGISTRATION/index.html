@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Preregistration: CSO Insight evaluation - CSO Insight</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">CSO Insight</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../quickstart/" class="nav-link">Quick start</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../technical-report/" class="nav-link">Technical report</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../PREREGISTRATION_STATUS/" class="nav-link">Frozen analysis plan</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../data-manifest/" class="nav-link">Data manifest</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../results/" class="nav-link">Results</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../licence/" class="nav-link">Licence</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#preregistration-cso-insight-evaluation" class="nav-link">Preregistration: CSO Insight evaluation</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#question" class="nav-link">Question</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#data" class="nav-link">Data</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#splits-fixed-before-results" class="nav-link">Splits (fixed before results)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#methods" class="nav-link">Methods</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#baselines-official-simple-rules" class="nav-link">Baselines (official simple rules)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#metrics" class="nav-link">Metrics</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#scoring-integrity-tests" class="nav-link">Scoring integrity tests</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#stop-rules" class="nav-link">Stop rules</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#uncertainty" class="nav-link">Uncertainty</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#what-we-will-not-do" class="nav-link">What we will not do</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#expected-outputs" class="nav-link">Expected outputs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#hardware" class="nav-link">Hardware</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="preregistration-cso-insight-evaluation">Preregistration: CSO Insight evaluation<a class="headerlink" href="#preregistration-cso-insight-evaluation" title="Permanent link">&para;</a></h1>
+<p>Frozen: 2026-10-01 (before any pipeline results)</p>
+<h2 id="question">Question<a class="headerlink" href="#question" title="Permanent link">&para;</a></h2>
+<p>How well does a rainfall-normalized per-outfall model rank CSO outfalls and predict overflow volume compared to simple baselines on hold-out years?</p>
+<h2 id="data">Data<a class="headerlink" href="#data" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Primary dataset:</strong> Massachusetts EEA combined sewer overflow notifications CSV (<code>https://openamend.org/data/EEADP_CSO.csv</code>).</li>
+<li><strong>Events included:</strong> Rows where <code>eventType</code> contains "CSO".</li>
+<li><strong>Rainfall:</strong> Co-reported <code>rainfallData</code> field (inches, converted to mm). No model-assisted relabelling.</li>
+<li><strong>Volume:</strong> Co-reported <code>volumnOfEvent</code> field (US gallons, converted to m3).</li>
+</ul>
+<h2 id="splits-fixed-before-results">Splits (fixed before results)<a class="headerlink" href="#splits-fixed-before-results" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Split</th>
+<th>Years</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Train</td>
+<td>2022, 2023</td>
+<td>Fit rainfall-response models and ranking</td>
+</tr>
+<tr>
+<td>Validation</td>
+<td>2024</td>
+<td>Model selection (not used for final headline metrics)</td>
+</tr>
+<tr>
+<td>Test</td>
+<td>2025</td>
+<td>Headline hold-out metrics</td>
+</tr>
+</tbody>
+</table>
+<p>Rows from 2026 are excluded from evaluation splits (partial year).</p>
+<h2 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Clean and normalize units (gallons to m3, inches to mm).</li>
+<li>Align events where both volume and rainfall are present.</li>
+<li>Fit log-linear rainfall response per outfall (minimum 5 paired observations).</li>
+<li>Rank outfalls by bootstrap resampling of events (500 samples, seed 42) for frequency and total volume.</li>
+<li>Flag data quality: &gt;50% missing volume or rainfall per outfall, negative values, duration &gt;72 h.</li>
+</ol>
+<h2 id="baselines-official-simple-rules">Baselines (official simple rules)<a class="headerlink" href="#baselines-official-simple-rules" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Rule</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1</td>
+<td>Event count ranking</td>
+<td>Count raw events per outfall on test year</td>
+</tr>
+<tr>
+<td>B2</td>
+<td>Mean volume</td>
+<td>Predict constant mean volume per outfall from train+validation</td>
+</tr>
+<tr>
+<td>B3</td>
+<td>Rainfall threshold</td>
+<td>Predict overflow when rainfall exceeds training 75th percentile for that outfall</td>
+</tr>
+</tbody>
+</table>
+<h2 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Definition</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spearman_trainval_vs_test_frequency</code></td>
+<td>Spearman correlation between train+validation frequency ranks and test-year counts</td>
+<td>dimensionless</td>
+</tr>
+<tr>
+<td><code>rmse_rainfall_model_m3</code></td>
+<td>RMSE of rainfall-response volume predictions on test events with paired data</td>
+<td>m3</td>
+</tr>
+<tr>
+<td><code>rmse_mean_volume_baseline_m3</code></td>
+<td>RMSE of B2 on same test events</td>
+<td>m3</td>
+</tr>
+<tr>
+<td><code>rain_threshold_positive_rate</code></td>
+<td>Fraction of B3 positive predictions on test events</td>
+<td>proportion</td>
+</tr>
+</tbody>
+</table>
+<p>All metrics reported with bootstrap 95% intervals (500 resamples, seed 42).</p>
+<h2 id="scoring-integrity-tests">Scoring integrity tests<a class="headerlink" href="#scoring-integrity-tests" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Perfect rank agreement must score Spearman rho = 1.0.</li>
+<li>Empty comparison must return no score.</li>
+</ul>
+<h2 id="stop-rules">Stop rules<a class="headerlink" href="#stop-rules" title="Permanent link">&para;</a></h2>
+<ol>
+<li>If test-year events &lt; 100, stop and report (do not claim generalization).</li>
+<li>If fewer than 10 outfalls have paired volume+rainfall in train+validation, stop.</li>
+<li>If bootstrap RMSE CIs are undefined (NaN), stop.</li>
+</ol>
+<h2 id="uncertainty">Uncertainty<a class="headerlink" href="#uncertainty" title="Permanent link">&para;</a></h2>
+<p>Bootstrap resampling unit = <strong>individual CSO events</strong> (not outfalls alone), preserving per-outfall structure within each resample.</p>
+<h2 id="what-we-will-not-do">What we will not do<a class="headerlink" href="#what-we-will-not-do" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Tune splits after seeing test metrics.</li>
+<li>Label data with this package's parsers and call it manual ground truth.</li>
+<li>Compare model rerun to itself as inter-rater agreement.</li>
+</ul>
+<h2 id="expected-outputs">Expected outputs<a class="headerlink" href="#expected-outputs" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>results/evaluation.json</code></li>
+<li><code>results/report.html</code></li>
+<li><code>RESULTS.md</code></li>
+<li>Figures under <code>results/figures/</code></li>
+</ul>
+<h2 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link">&para;</a></h2>
+<p>Apple M3 Ultra, local execution only.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>CSO Insight Report</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+    table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; margin-bottom: 1.5rem; }
+    th, td { border: 1px solid #444; padding: 0.4rem 0.6rem; text-align: left; }
+    th { background: #eee; }
+    figure { margin: 1rem 0; }
+    img { max-width: 100%; height: auto; }
+    a:focus-visible, button:focus-visible { outline: 2px solid #005fcc; outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CSO Insight Report</h1>
+    <p>Case study: Massachusetts EEA combined sewer overflow notifications (Archive of Massachusetts Environmental Data feed). Evaluation years 2022 to 2025 with 2025 held out; 2022 begins July 2. Descriptive rankings use fit-eligible notifications only and are not rainfall-normalized prioritization. All classes are counted as report rows, not distinct discharges. UNKNOWN IDs pool reports by permittee and are not established physical outfalls. The mean-volume baseline beats the rainfall model on pooled RMSE. RMSE support: 1625/1643 eligible paired reports and 1625/3075 eligible test reports.</p>
+  </header>
+  <main>
+    
+    <aside role="note"><p>Frozen analysis plan, amended retrospectively. The hash verifies
+    content integrity and does not establish chronology. The first repository commit already
+    included results; pre-result registration is unverified. 2024 is pooled with 2022-2023
+    for fitting; 2025 is held out. See
+    <a href="../docs/PREREGISTRATION_STATUS.md">plan status and recorded amendments</a>.</p></aside>
+    <section aria-labelledby="metrics-heading">
+      <h2 id="metrics-heading">Hold-out evaluation metrics (test year 2025)</h2>
+      <p>Intervals are conditional event-bootstrap ranges. Spearman resamples train+validation
+      events while holding 2025 counts fixed. RMSE bootstrap resamples paired test events
+      without refitting models. They omit storm dependence, fitting uncertainty and
+      measurement error.</p>
+      <p>The mean-volume baseline RMSE is lower than the rainfall model on the same paired
+      events. This does not demonstrate generalization advantage for the rainfall model.</p>
+      <p>Rainfall threshold is positive at or above the eligible training+validation 75th percentile (at least three rainfall observations per identifier). Of 1643 eligible known-rainfall test report rows, 1635 have threshold support; 8 rows across 5 identifiers default negative because support is insufficient. These rows remain in the denominator; missing rainfall is excluded. This event-conditional fraction does not measure overflow detection or accuracy on non-event days.</p>
+      <table>
+        <thead><tr><th scope="col">Metric</th><th scope="col">Value</th>
+        <th scope="col">95% interval</th><th scope="col">N</th></tr></thead>
+        <tbody><tr><td>Report-row count stability (Spearman)</td><td>0.8510</td><td>[0.8302, 0.8543]</td><td>171</td></tr><tr><td>Rainfall-model pooled RMSE (m3)</td><td>12210.4286</td><td>[7100.5400, 16489.1477]</td><td>1625</td></tr><tr><td>Mean-volume baseline pooled RMSE (m3)</td><td>4801.3013</td><td>[4454.0005, 5197.9809]</td><td>1625</td></tr><tr><td>Rain-threshold positive fraction (reported rows only)</td><td>0.2404</td><td>[0.2200, 0.2608]</td><td>1643</td></tr></tbody>
+      </table>
+    </section>
+    <section aria-labelledby="freq-heading">
+      <h2 id="freq-heading">Descriptive ranking: report row count (2022-2025)</h2>
+      <p>Point estimates are observed totals. Intervals are on report-count totals, not rank positions. Totals exclude events
+      quarantined by plausibility caps (including volume above 10 million US gallons).
+      See results/cohort_summary.json for exclusion counts and sensitivity.</p>
+      <table>
+        <thead><tr><th scope="col">Rank</th><th scope="col">Outfall</th>
+        <th scope="col">Observed report rows</th><th scope="col">95% interval on count</th></tr></thead>
+        <tbody><tr><td>1</td><td>FAL011 (FALL RIVER)</td><td>559.0</td><td>[513.0, 604.0]</td></tr><tr><td>2</td><td>NEW003 (NEW BEDFORD)</td><td>555.0</td><td>[509.0, 601.5]</td></tr><tr><td>3</td><td>FAL010 (FALL RIVER)</td><td>539.0</td><td>[495.0, 586.0]</td></tr><tr><td>4</td><td>FAL013 (FALL RIVER)</td><td>496.0</td><td>[454.0, 539.0]</td></tr><tr><td>5</td><td>NEW023 (NEW BEDFORD)</td><td>494.0</td><td>[455.5, 541.0]</td></tr><tr><td>6</td><td>NEW035 (NEW BEDFORD)</td><td>372.0</td><td>[332.0, 407.5]</td></tr><tr><td>7</td><td>NEW031 (NEW BEDFORD)</td><td>331.0</td><td>[293.5, 363.0]</td></tr><tr><td>8</td><td>SPR012 (SPRINGFIELD)</td><td>308.0</td><td>[276.0, 343.5]</td></tr><tr><td>9</td><td>FAL002 (FALL RIVER)</td><td>297.0</td><td>[264.5, 329.0]</td></tr><tr><td>10</td><td>SPR010 (SPRINGFIELD)</td><td>276.0</td><td>[246.5, 307.5]</td></tr><tr><td>11</td><td>FAL014 (FALL RIVER)</td><td>274.0</td><td>[243.5, 306.0]</td></tr><tr><td>12</td><td>NEW018 (NEW BEDFORD)</td><td>266.0</td><td>[236.0, 297.0]</td></tr><tr><td>13</td><td>SPR014 (SPRINGFIELD)</td><td>255.0</td><td>[227.5, 284.0]</td></tr><tr><td>14</td><td>HOL018 (HOLYOKE)</td><td>249.0</td><td>[220.0, 278.5]</td></tr><tr><td>15</td><td>NEW027 (NEW BEDFORD)</td><td>247.0</td><td>[216.0, 278.5]</td></tr></tbody>
+      </table>
+    </section>
+    <section aria-labelledby="vol-heading">
+      <h2 id="vol-heading">Descriptive ranking: observed reported volume (2022-2025)</h2>
+      <p>Intervals are on volume totals, not rank positions. Totals exclude quarantined
+      high-volume notifications. Missing volume contributes zero.</p>
+      <table>
+        <thead><tr><th scope="col">Rank</th><th scope="col">Outfall</th>
+        <th scope="col">Observed reported volume (m3)</th><th scope="col">95% interval on volume</th></tr></thead>
+        <tbody><tr><td>1</td><td>NEW023 (NEW BEDFORD)</td><td>1901175.7</td><td>[1536880.3, 2286187.2]</td></tr><tr><td>2</td><td>FAL013 (FALL RIVER)</td><td>1214490.1</td><td>[987114.0, 1435538.6]</td></tr><tr><td>3</td><td>HOL09 (HOLYOKE)</td><td>1161182.1</td><td>[905814.1, 1456173.5]</td></tr><tr><td>4</td><td>FAL011 (FALL RIVER)</td><td>1074541.0</td><td>[897373.3, 1294002.5]</td></tr><tr><td>5</td><td>SPR010 (SPRINGFIELD)</td><td>893045.2</td><td>[681698.3, 1127724.4]</td></tr><tr><td>6</td><td>WOR001 (WORCESTER)</td><td>811167.5</td><td>[558543.6, 1057672.7]</td></tr><tr><td>7</td><td>NEW003 (NEW BEDFORD)</td><td>789208.9</td><td>[611265.8, 998783.1]</td></tr><tr><td>8</td><td>SPR012 (SPRINGFIELD)</td><td>783977.3</td><td>[592582.4, 993610.9]</td></tr><tr><td>9</td><td>HOL018 (HOLYOKE)</td><td>757223.4</td><td>[588495.3, 901839.0]</td></tr><tr><td>10</td><td>LOW008 (LOWELL)</td><td>743000.3</td><td>[527612.3, 1001887.3]</td></tr><tr><td>11</td><td>LOW030-2 (LOWELL)</td><td>708825.6</td><td>[479542.6, 969487.0]</td></tr><tr><td>12</td><td>SPR042 (SPRINGFIELD)</td><td>651151.3</td><td>[477243.4, 866194.6]</td></tr><tr><td>13</td><td>FAL010 (FALL RIVER)</td><td>641964.6</td><td>[500677.0, 801151.6]</td></tr><tr><td>14</td><td>NEW017 (NEW BEDFORD)</td><td>608599.3</td><td>[429484.8, 813262.0]</td></tr><tr><td>15</td><td>MWR205 (SOMERVILLE)</td><td>560672.2</td><td>[357712.7, 724749.3]</td></tr></tbody>
+      </table>
+    </section>
+    <section aria-labelledby="quality-heading">
+      <h2 id="quality-heading">Aggregate quality flag counts (qa_flags.json)</h2>
+      <p>Full-feed denominator: 16720 report rows; 8058 missing volume or rainfall. Unique quarantined report rows: 176. Report-row flags overlap; their sum is not a count of unique excluded rows. Missingness and unresolved clocks do not quarantine calendar-year analysis.</p>
+      <h3>QA: identifiers</h3><table><thead><tr><th scope='col'>Flag</th><th scope='col'>Count (identifiers)</th><th scope='col'>Definition</th></tr></thead><tbody><tr><td>missing_volume</td><td>78</td><td>Identifiers with &gt;50% of full-feed report rows missing volume</td></tr><tr><td>missing_rainfall</td><td>78</td><td>Identifiers with &gt;50% of full-feed report rows missing rainfall</td></tr></tbody></table><h3>QA: report rows</h3><table><thead><tr><th scope='col'>Flag</th><th scope='col'>Count (report rows)</th><th scope='col'>Definition</th></tr></thead><tbody><tr><td>negative_volume</td><td>0</td><td>Report rows with converted volume below zero</td></tr><tr><td>negative_rainfall</td><td>0</td><td>Report rows with rainfall below zero</td></tr><tr><td>implausible_rainfall</td><td>6</td><td>Report rows with rainfall above 254 mm</td></tr><tr><td>implausible_volume</td><td>159</td><td>Report rows with volume above 10 million US gallons</td></tr><tr><td>long_duration</td><td>11</td><td>Report rows with duration above 72 hours</td></tr><tr><td>quarantined_from_fit</td><td>176</td><td>Report rows excluded by any plausibility filter</td></tr><tr><td>unresolved_time</td><td>198</td><td>Report rows with missing, malformed, conflicting or ambiguous clocks</td></tr></tbody></table>
+    </section>
+    <section aria-labelledby="figures-heading">
+      <h2 id="figures-heading">Figures</h2>
+      <figure><img src="figures/top_outfalls_frequency.png" alt="Observed report-row counts with conditional 95% intervals chart"/><figcaption>Observed report-row counts with conditional 95% intervals. Source: openamend.org/data/EEADP_CSO.csv; snapshot SHA-256 0e8a56ebf1870646431de7c1d326065fbcd9cd27f63132e0790e79eb5ef231c3; fit-eligible events only.</figcaption></figure><figure><img src="figures/top_outfalls_volume.png" alt="Observed reported volume totals (m3) with conditional 95% intervals chart"/><figcaption>Observed reported volume totals (m3) with conditional 95% intervals. Source: openamend.org/data/EEADP_CSO.csv; snapshot SHA-256 0e8a56ebf1870646431de7c1d326065fbcd9cd27f63132e0790e79eb5ef231c3; fit-eligible events only.</figcaption></figure>
+    </section>
+  </main>
+  <footer><p>Source: openamend.org/data/EEADP_CSO.csv; snapshot SHA-256 0e8a56ebf1870646431de7c1d326065fbcd9cd27f63132e0790e79eb5ef231c3; fit-eligible events only. Generated by cso-insight (Apache-2.0). Documentation CC BY 4.0.</p></footer>
+</body>
+</html>

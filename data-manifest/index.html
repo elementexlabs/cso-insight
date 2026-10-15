@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Data manifest - CSO Insight</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">CSO Insight</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../quickstart/" class="nav-link">Quick start</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../technical-report/" class="nav-link">Technical report</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../PREREGISTRATION_STATUS/" class="nav-link">Frozen analysis plan</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Data manifest</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../results/" class="nav-link">Results</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../licence/" class="nav-link">Licence</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../PREREGISTRATION_STATUS/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../results/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#data-manifest" class="nav-link">Data manifest</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#massachusetts-feed" class="nav-link">Massachusetts feed</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#disclosure-inventory" class="nav-link">Disclosure inventory</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#licence-boundary" class="nav-link">Licence boundary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#other-referenced-datasets-and-research" class="nav-link">Other referenced datasets and research</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#snapshot-recovery" class="nav-link">Snapshot recovery</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#preservation-during-acquisition" class="nav-link">Preservation during acquisition</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="data-manifest">Data manifest<a class="headerlink" href="#data-manifest" title="Permanent link">&para;</a></h1>
+<p>Inventory and rights assessment updated 2026-10-01. Public outputs are factual
+aggregate summaries of utility-reported Massachusetts CSO report rows, with source
+attribution. They are not independently verified physical discharges.</p>
+<h2 id="massachusetts-feed">Massachusetts feed<a class="headerlink" href="#massachusetts-feed" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Owner</td>
+<td>Massachusetts EEA / MassDEP, archived by the Archive of Massachusetts Environmental Data (AMEND)</td>
+</tr>
+<tr>
+<td>Acquisition</td>
+<td><a href="https://openamend.org/data/EEADP_CSO.csv">AMEND CSV</a></td>
+</tr>
+<tr>
+<td>Source page</td>
+<td><a href="https://openamend.org/data/EEADP_all.html">EEA portal archive</a></td>
+</tr>
+<tr>
+<td>Snapshot SHA-256</td>
+<td><code>0e8a56ebf1870646431de7c1d326065fbcd9cd27f63132e0790e79eb5ef231c3</code></td>
+</tr>
+<tr>
+<td>Snapshot size</td>
+<td>5,114,767 bytes; 16,720 CSO report rows after event-type filter</td>
+</tr>
+<tr>
+<td>Classes retained</td>
+<td>Public Notification Report and Verified Data Report; other classes retained if present</td>
+</tr>
+<tr>
+<td>Counting unit</td>
+<td>Report rows; stages may produce multiple reports for a discharge</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="https://openamend.org/data/">AMEND dataset page</a> describes a freely distributed
+public-source database (checked 2026-10-01). No separate dataset-specific licence was
+found in the reviewed page. A second check on 2026-10-11 found none either: the AMEND data page
+and its about page state no licence, and the project's source repository
+(<a href="https://github.com/nesanders/MAenvironmentaldata">nesanders/MAenvironmentaldata</a>) declares none
+(GitHub repository licence field empty and no licence file, read 2026-10-11 00:35 PT).
+We therefore treat the AMEND files as unlicensed copies of Massachusetts public records:
+this repository ships no AMEND file, only the derived aggregates listed below, with attribution. The <a href="https://www.mass.gov/info-details/massdep-site-policies">MassDEP policies</a>
+provide a public-record reuse basis with copyright exceptions; direct access on
+2026-10-01 returned 403, so no new blanket permission verification is asserted.
+The exact shipped fields are computed counts by class/year/identifier, summed volumes,
+aggregate flag-type counts, bootstrap intervals, support counts and evaluation
+statistics. Our basis for these outputs is factual aggregation of public records,
+not a grant to relicense the upstream database. No upstream prose, map tiles or
+analysis implementation is copied. Attribution is retained in every JSON/HTML/PNG
+output and in documentation; design licences apply to our original expression only.</p>
+<h2 id="disclosure-inventory">Disclosure inventory<a class="headerlink" href="#disclosure-inventory" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Material</th>
+<th>Current public snapshot</th>
+<th>Boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raw CSV, normalized rows, model coefficients</td>
+<td>Withheld; local ignored data directories</td>
+<td>Acquire from source; no raw archive in the release</td>
+</tr>
+<tr>
+<td>Event UUIDs, row-linked QA details, individual measurements</td>
+<td>Withheld</td>
+<td>QA JSON and HTML export flag counts only; counts can overlap</td>
+</tr>
+<tr>
+<td>Individual rainfall/volume scatter</td>
+<td>Withheld</td>
+<td>Removed; only aggregate rankings displayed</td>
+</tr>
+<tr>
+<td>Evaluation/cohort/timing JSON</td>
+<td>Factual aggregates plus attribution</td>
+<td>No event identifiers or individual measurement pairs</td>
+</tr>
+<tr>
+<td>Ranking PNGs</td>
+<td>Observed aggregate report counts/volume by identifier, with intervals and municipality context</td>
+<td>Source/hash/rights metadata embedded; accompanying notice in results/ATTRIBUTION.md</td>
+</tr>
+<tr>
+<td>HTML/Markdown</td>
+<td>Aggregate metrics, methodology and cohort flow</td>
+<td>Original text/design CC BY 4.0; upstream rights retained</td>
+</tr>
+<tr>
+<td>Synthetic test fixtures</td>
+<td>Original constructed examples</td>
+<td>No client/private data</td>
+</tr>
+</tbody>
+</table>
+<p>Historical commits contained a record-linked QA export and an event-pair scatter;
+current-tree withholding does not remove them from the original history. The clean
+public snapshot procedure in RELEASE.md omits that history without rewriting it.</p>
+<h2 id="licence-boundary">Licence boundary<a class="headerlink" href="#licence-boundary" title="Permanent link">&para;</a></h2>
+<p>Code is Apache-2.0 (root LICENSE). Original documentation and figure design are
+CC BY 4.0 (LICENSE-CC-BY-4.0.txt). These declarations do not license upstream data,
+third-party works or database rights. Source facts are attributed to MassDEP via
+AMEND; rights remain with their owners. Do not infer an unconditional dataset grant.</p>
+<h2 id="other-referenced-datasets-and-research">Other referenced datasets and research<a class="headerlink" href="#other-referenced-datasets-and-research" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Use and redistribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://echo.epa.gov/tools/data-downloads/sewer-overflow-download-summary">EPA ECHO</a></td>
+<td>Link/context only; no content shipped</td>
+</tr>
+<tr>
+<td><a href="https://metrovancouver.org/services/liquid-waste/real-time-sewer-overflow-map">Metro Vancouver map</a></td>
+<td>Link/context only; no tiles, records or reports shipped</td>
+</tr>
+<tr>
+<td><a href="https://www.nyc.gov/assets/dep/downloads/pdf/water/stormwater/spdes-bmp-cso-annual-report-2024.pdf">NYC annual CSO report</a></td>
+<td>Link only; PDF withheld</td>
+</tr>
+<tr>
+<td>AMEND/SWMM/PySWMM research/software</td>
+<td>Citations only; no upstream implementation or paper text shipped</td>
+</tr>
+</tbody>
+</table>
+<h2 id="snapshot-recovery">Snapshot recovery<a class="headerlink" href="#snapshot-recovery" title="Permanent link">&para;</a></h2>
+<p>The live AMEND route refreshes; a hash pin detects changes but cannot ensure perpetual
+availability. Preserve a lawful private copy of the exact snapshot with this digest.
+If live acquisition no longer matches, obtain that snapshot from the data owner or
+an independently permitted archive, place it at data/raw/ma_eea_cso.csv and run
+<code>cso-insight run --root . --skip-download</code>. The pipeline verifies the same hash before
+analysis. Never reseal a changed feed as this result. If no matching copy is available,
+this analysis cannot be regenerated; report that acquisition limitation. The release
+contains no raw snapshot and makes no immutable-download guarantee.</p>
+<h2 id="preservation-during-acquisition">Preservation during acquisition<a class="headerlink" href="#preservation-during-acquisition" title="Permanent link">&para;</a></h2>
+<p><code>./scripts/download_data.sh [destination]</code> writes a temporary sibling, verifies the
+pinned hash, then atomically swaps into a separate acquisition path. Its default is
+<code>data/raw/ma_eea_cso.download.csv</code>. It refuses the frozen
+<code>data/raw/ma_eea_cso.csv</code>, including aliases and hard links. Network/hash failures
+preserve existing files. The Python pipeline also verifies a temporary download
+before replacement; the helper never overwrites the frozen snapshot.</p>
+<p>If the frozen path is absent, a permitted matching acquisition can be installed with
+<code>test ! -e data/raw/ma_eea_cso.csv &amp;&amp; cp -n data/raw/ma_eea_cso.download.csv data/raw/ma_eea_cso.csv</code>.
+Then run <code>cso-insight run --root . --skip-download</code>, which verifies the hash again.
+A changed feed requires a separately versioned analysis. Never change this pin to
+make reproduction pass; recover a matching permitted snapshot or stop.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
