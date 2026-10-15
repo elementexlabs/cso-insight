@@ -1,0 +1,33 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.000
+CSO Insight checks public sewer overflow reports before they guide outfall priorities.
+
+2
+00:00:05.000 --> 00:00:10.000
+One command rebuilds every result from the pinned public feed: cso-insight run --root .
+
+3
+00:00:10.000 --> 00:00:15.000
+Hold-out 2025, scored reports: a simple average beats the rainfall model.
+
+4
+00:00:15.000 --> 00:00:20.000
+Outfalls ranked by report rows, 2022 to 2025, with intervals on the counts.
+
+5
+00:00:20.000 --> 00:00:25.000
+Ranked by reported volume; volumes above 10 million US gallons are set aside first.
+
+6
+00:00:25.000 --> 00:00:30.000
+Every quality flag is counted: 176 report rows are quarantined from fitting.
+
+7
+00:00:30.000 --> 00:00:35.000
+The source file and its hash are pinned, so every number can be rechecked.
+
+8
+00:00:35.000 --> 00:00:40.000
+The results page lists headline metrics with intervals and the cohort flow.

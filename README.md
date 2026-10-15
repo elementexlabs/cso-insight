@@ -1,5 +1,58 @@
 # cso-insight
 
+CSO Insight is an open work sample by ElementeX Labs Inc. It reads public sewer overflow reports from Massachusetts, flags data quality problems, ranks the overflow outlets (outfalls) and tests whether a rainfall-based model predicts overflow volume better than a simple average. It is for engineers deciding whether such public reports are reliable enough to set outlet priorities.
+
+[![Engineer summary page from CSO Insight for Massachusetts sewer overflow reports: the 2025 hold-out metrics, where the simple mean-volume baseline beats the rainfall model on the scored reports, above the outfall rankings with intervals.](docs/media/hero_report.png)](https://elementexlabs.github.io/cso-insight/report/)
+
+**Try it live:** [the engineer summary and the documentation](https://elementexlabs.github.io/cso-insight/), built from public data, with nothing to install.
+
+**Watch the 40-second walkthrough** (captioned, no sound needed). Select the preview to play the full video.
+
+[![Captioned walkthrough of CSO Insight: the documentation home, the quick start, the 2025 hold-out metrics, both outfall rankings, the quality flags, the pinned data manifest and the results page.](docs/media/demo-preview.gif)](https://elementexlabs.github.io/cso-insight/media/demo.mp4)
+
+![Bar chart of pooled RMSE on 1,625 scored paired 2025 report rows: the mean-volume baseline at 4,801 cubic metres (95% interval 4,454 to 5,198) against the rainfall model at 12,210 cubic metres (7,101 to 16,489); lower is better.](docs/media/rmse_comparison.png)
+
+### Example outputs
+
+| | |
+|---|---|
+| ![Hold-out evaluation metrics table for test year 2025: report-row count stability (Spearman 0.851), pooled RMSE for the rainfall model and for the mean-volume baseline, and the rain-threshold positive fraction, each with a 95% interval and its N.](docs/media/example_metrics.png) | ![Top 15 outfalls ranked by report rows, 2022 to 2025, with 95% intervals on the counts; Fall River and New Bedford outfalls lead the list.](docs/media/example_ranking_rows.png) |
+| ![Quality flag counts: identifiers with mostly missing volume or rainfall, and report rows flagged as negative, implausible, over 72 hours or with unresolved clocks; 176 report rows are quarantined from fitting.](docs/media/example_qa_flags.png) | ![Data manifest page: the Massachusetts feed, its owner, the acquisition link, the snapshot SHA-256 and its size, 16,720 CSO report rows.](docs/media/example_data_manifest.png) |
+| ![Bar chart of report row counts for the leading outfall identifiers, 2022 to 2025, with intervals.](results/figures/top_outfalls_frequency.png) | ![Bar chart of observed reported volume for the leading outfall identifiers, 2022 to 2025, with intervals.](results/figures/top_outfalls_volume.png) |
+
+## How it works
+
+1. Download the public Massachusetts overflow file from AMEND (16,720 report rows; snapshot hash pinned).
+2. Parse timestamps, convert units and flag data quality issues.
+3. Apply the eligibility rules and the volume cap, and record every exclusion in a cohort ledger; the cap changes the reported priorities.
+4. Fit a rainfall response model for each outfall with enough training data (at least five variable-rainfall pairs).
+5. Rank outfalls by report counts and volumes, with bootstrap intervals.
+6. Compare the rainfall model with a simple mean-volume baseline on the same scored subset of 2025 reports (1,625 of 3,075 eligible reports).
+7. Write the results file, the JSON summaries and the engineer summary page (`results/report.html`).
+
+## Architecture
+
+- `src/cso_insight/`: download, cleaning, alignment, quality flags, cohort ledger, models, baselines and the report, behind the `cso-insight` command.
+- `results/`: the generated engineer summary, JSON summaries and figures.
+- `docs/site/` and `mkdocs.yml`: the documentation site, published with the report on GitHub Pages.
+- `tests/`: unit and regression tests.
+- `scripts/make_showcase_media.py`: rebuilds the images and the walkthrough on this page from the real outputs.
+
+## Design choices
+
+- A simple baseline comes first: the rainfall model has to beat a mean-volume average on the same paired rows before it earns trust. Here it does not.
+- Every exclusion is counted in a ledger, so a reader can see how much data each rule removes.
+- The source snapshot is pinned by its hash, so every number can be regenerated and checked.
+- Report rows are the counting unit, not reconciled discharges, and the text says so.
+
+## Why it matters
+
+On the 2025 reports it could score, a simple average beat the model; deployment needs better reporting and local checks.
+
+The images and the walkthrough on this page are rebuilt from the real outputs with `python scripts/make_showcase_media.py` (it needs Google Chrome, ffmpeg and the documentation extras).
+
+---
+
 **Buyer decision: Are these public overflow reports reliable enough to guide outfall priorities or justify a rainfall model?**
 
 This work sample traces intake, QA, cohort accounting and baseline evaluation.
