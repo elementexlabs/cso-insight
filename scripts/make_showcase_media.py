@@ -1,14 +1,16 @@
 """Make the README and GitHub Pages media from the project's real outputs.
 
 The images and the walkthrough video show the built documentation site and the engineer summary page
-(results/report.html) as the pipeline wrote them: no mock-ups, public data only. Needs mkdocs, matplotlib and Pillow
-(the docs extras), Google Chrome for headless screenshots with a fresh empty profile, and ffmpeg; exiftool is used
-when present to strip image metadata.
+(results/report.html) as the pipeline wrote them: no mock-ups, public data only. Needs mkdocs,
+matplotlib and Pillow (the docs extras), Google Chrome for headless screenshots with a fresh empty
+profile, and ffmpeg; exiftool is used when present to strip image metadata.
 
-Writes small images, the captions file and the preview animation to docs/media/ (committed), and the full MP4 plus
-the built Pages site to showcase-media/ (not committed; published with the Pages site).
+Writes small images, the captions file and the preview animation to docs/media/ (committed), and the
+full MP4 plus the built Pages site to showcase-media/ (not committed; published with the Pages
+site).
 Usage: python scripts/make_showcase_media.py
 """
+
 from __future__ import annotations
 
 import functools
@@ -24,8 +26,8 @@ from pathlib import Path
 import matplotlib
 
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt  # noqa: E402
-from PIL import Image, ImageDraw, ImageFont  # noqa: E402
+import matplotlib.pyplot as plt
+from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 MEDIA = ROOT / "docs" / "media"
@@ -39,23 +41,62 @@ SECONDS_PER_STEP = 5
 
 # One caption per step of the walkthrough: (page, crop box in the full-page screenshot, caption).
 STEPS = [
-    ("home", (0, 0, 1400, 900), "CSO Insight checks public sewer overflow reports before they guide outfall priorities."),
-    ("quickstart", (0, 0, 1400, 900), "One command rebuilds every result from the pinned public feed: cso-insight run --root ."),
-    ("report", (0, 0, 1400, 900), "Hold-out 2025, scored reports: a simple average beats the rainfall model."),
-    ("report", (0, 800, 1400, 1700), "Outfalls ranked by report rows, 2022 to 2025, with intervals on the counts."),
-    ("report", (0, 1600, 1400, 2500), "Ranked by reported volume; volumes above 10 million US gallons are set aside first."),
-    ("report", (0, 2350, 1400, 3250), "Every quality flag is counted: 176 report rows are quarantined from fitting."),
-    ("datamanifest", (0, 0, 1400, 900), "The source file and its hash are pinned, so every number can be rechecked."),
-    ("results", (0, 0, 1400, 900), "The results page lists headline metrics with intervals and the cohort flow."),
+    (
+        "home",
+        (0, 0, 1400, 900),
+        "CSO Insight checks public sewer overflow reports before they guide outfall priorities.",
+    ),
+    (
+        "quickstart",
+        (0, 0, 1400, 900),
+        "One command rebuilds every result from the pinned public feed: cso-insight run --root .",
+    ),
+    (
+        "report",
+        (0, 0, 1400, 900),
+        "Hold-out 2025, scored reports: a simple average beats the rainfall model.",
+    ),
+    (
+        "report",
+        (0, 800, 1400, 1700),
+        "Outfalls ranked by report rows, 2022 to 2025, with intervals on the counts.",
+    ),
+    (
+        "report",
+        (0, 1600, 1400, 2500),
+        "Ranked by reported volume; volumes above 10 million US gallons are set aside first.",
+    ),
+    (
+        "report",
+        (0, 2350, 1400, 3250),
+        "Every quality flag is counted: 176 report rows are quarantined from fitting.",
+    ),
+    (
+        "datamanifest",
+        (0, 0, 1400, 900),
+        "The source file and its hash are pinned, so every number can be rechecked.",
+    ),
+    (
+        "results",
+        (0, 0, 1400, 900),
+        "The results page lists headline metrics with intervals and the cohort flow.",
+    ),
 ]
-PAGE_URLS = {"home": "/", "quickstart": "/quickstart/", "report": "/report/", "datamanifest": "/data-manifest/",
-             "results": "/results/"}
+PAGE_URLS = {
+    "home": "/",
+    "quickstart": "/quickstart/",
+    "report": "/report/",
+    "datamanifest": "/data-manifest/",
+    "results": "/results/",
+}
 
 
 def build_site() -> None:
     if PAGES.exists():
         shutil.rmtree(PAGES)
-    subprocess.run([sys.executable, "-m", "mkdocs", "build", "-q", "-d", str(PAGES)], cwd=ROOT, check=True)
+    subprocess.run(
+        [sys.executable, "-m", "mkdocs", "build", "-q", "-d", str(PAGES)], cwd=ROOT, check=True
+    )
     report = PAGES / "report"
     report.mkdir(parents=True)
     shutil.copy2(ROOT / "results" / "report.html", report / "index.html")
@@ -74,10 +115,23 @@ def screenshots(port: int) -> None:
     with tempfile.TemporaryDirectory(prefix="clean-profile-") as profile:
         for name, path in PAGE_URLS.items():
             height = 3400 if name == "report" else 2600
-            subprocess.run([CHROME, "--headless=new", f"--user-data-dir={profile}", "--no-first-run",
-                            "--disable-extensions", "--hide-scrollbars", "--force-device-scale-factor=1",
-                            f"--window-size=1400,{height}", f"--screenshot={SHOTS / (name + '.png')}",
-                            f"http://127.0.0.1:{port}{path}"], check=True, capture_output=True, timeout=90)
+            subprocess.run(
+                [
+                    CHROME,
+                    "--headless=new",
+                    f"--user-data-dir={profile}",
+                    "--no-first-run",
+                    "--disable-extensions",
+                    "--hide-scrollbars",
+                    "--force-device-scale-factor=1",
+                    f"--window-size=1400,{height}",
+                    f"--screenshot={SHOTS / (name + '.png')}",
+                    f"http://127.0.0.1:{port}{path}",
+                ],
+                check=True,
+                capture_output=True,
+                timeout=90,
+            )
 
 
 def captioned_frame(page: str, box: tuple[int, int, int, int], caption: str, index: int) -> Path:
@@ -101,14 +155,24 @@ def captioned_frame(page: str, box: tuple[int, int, int, int], caption: str, ind
 
 
 def rmse_chart() -> Path:
-    metrics = {m["name"]: m for m in json.loads((ROOT / "results" / "evaluation.json").read_text())["metrics"]}
-    rows = [("Mean-volume baseline", metrics["rmse_mean_volume_baseline_m3"]),
-            ("Rainfall model", metrics["rmse_rainfall_model_m3"])]
+    metrics = {
+        m["name"]: m
+        for m in json.loads((ROOT / "results" / "evaluation.json").read_text())["metrics"]
+    }
+    rows = [
+        ("Mean-volume baseline", metrics["rmse_mean_volume_baseline_m3"]),
+        ("Rainfall model", metrics["rmse_rainfall_model_m3"]),
+    ]
     fig, ax = plt.subplots(figsize=(8, 3.6), dpi=150)
-    for i, (label, m) in enumerate(rows):
+    for i, (_label, m) in enumerate(rows):
         ax.barh(i, m["value"], color=("#2f6f4f" if i == 0 else "#9c4a3c"))
-        ax.errorbar(m["value"], i, xerr=[[m["value"] - m["ci_low"]], [m["ci_high"] - m["value"]]], color="black",
-                    capsize=4)
+        ax.errorbar(
+            m["value"],
+            i,
+            xerr=[[m["value"] - m["ci_low"]], [m["ci_high"] - m["value"]]],
+            color="black",
+            capsize=4,
+        )
         ax.text(m["ci_high"] + 300, i, f"{m['value']:,.0f} m³", va="center")
     ax.set_yticks(range(len(rows)), [r[0] for r in rows])
     ax.invert_yaxis()
@@ -127,11 +191,13 @@ def rmse_chart() -> Path:
 
 def crops() -> list[Path]:
     """Hero and example images, cut from the real report and site screenshots."""
-    items = [("hero_report.png", "report", (180, 0, 1240, 860)),
-             ("example_metrics.png", "report", (180, 300, 1220, 860)),
-             ("example_ranking_rows.png", "report", (180, 840, 1220, 1650)),
-             ("example_qa_flags.png", "report", (180, 2380, 1220, 3090)),
-             ("example_data_manifest.png", "datamanifest", (0, 0, 1400, 900))]
+    items = [
+        ("hero_report.png", "report", (180, 0, 1240, 860)),
+        ("example_metrics.png", "report", (180, 300, 1220, 860)),
+        ("example_ranking_rows.png", "report", (180, 840, 1220, 1650)),
+        ("example_qa_flags.png", "report", (180, 2380, 1220, 3090)),
+        ("example_data_manifest.png", "datamanifest", (0, 0, 1400, 900)),
+    ]
     out = []
     for name, page, box in items:
         image = Image.open(SHOTS / f"{page}.png").convert("RGB").crop(box)
@@ -143,17 +209,60 @@ def crops() -> list[Path]:
 
 def video(frames: list[Path]) -> None:
     listing = OUT / "frames" / "list.txt"
-    listing.write_text("".join(f"file '{f.name}'\nduration {SECONDS_PER_STEP}\n" for f in frames)
-                       + f"file '{frames[-1].name}'\n")
+    listing.write_text(
+        "".join(f"file '{f.name}'\nduration {SECONDS_PER_STEP}\n" for f in frames)
+        + f"file '{frames[-1].name}'\n"
+    )
     mp4 = OUT / "demo.mp4"
-    subprocess.run([FFMPEG, "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(listing),
-                    "-vf", "fps=10,format=yuv420p", "-c:v", "libx264", "-crf", "26", "-preset", "slow",
-                    "-t", str(len(STEPS) * SECONDS_PER_STEP), "-movflags", "+faststart", "-map_metadata", "-1",
-                    "-fflags", "+bitexact", str(mp4)], check=True)
+    subprocess.run(
+        [
+            FFMPEG,
+            "-y",
+            "-loglevel",
+            "error",
+            "-f",
+            "concat",
+            "-safe",
+            "0",
+            "-i",
+            str(listing),
+            "-vf",
+            "fps=10,format=yuv420p",
+            "-c:v",
+            "libx264",
+            "-crf",
+            "26",
+            "-preset",
+            "slow",
+            "-t",
+            str(len(STEPS) * SECONDS_PER_STEP),
+            "-movflags",
+            "+faststart",
+            "-map_metadata",
+            "-1",
+            "-fflags",
+            "+bitexact",
+            str(mp4),
+        ],
+        check=True,
+    )
     gif = MEDIA / "demo-preview.gif"
-    subprocess.run([FFMPEG, "-y", "-loglevel", "error", "-i", str(mp4), "-vf",
-                    "fps=1,scale=720:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=128[p];[b][p]paletteuse",
-                    "-map_metadata", "-1", str(gif)], check=True)
+    subprocess.run(
+        [
+            FFMPEG,
+            "-y",
+            "-loglevel",
+            "error",
+            "-i",
+            str(mp4),
+            "-vf",
+            "fps=1,scale=720:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=128[p];[b][p]paletteuse",
+            "-map_metadata",
+            "-1",
+            str(gif),
+        ],
+        check=True,
+    )
     cues = []
     for i, (_, _, caption) in enumerate(STEPS):
         start, end = i * SECONDS_PER_STEP, (i + 1) * SECONDS_PER_STEP
@@ -181,7 +290,9 @@ def main() -> int:
         screenshots(port)
     finally:
         server.shutdown()
-    frames = [captioned_frame(page, box, caption, i) for i, (page, box, caption) in enumerate(STEPS)]
+    frames = [
+        captioned_frame(page, box, caption, i) for i, (page, box, caption) in enumerate(STEPS)
+    ]
     rmse_chart()
     crops()
     video(frames)
