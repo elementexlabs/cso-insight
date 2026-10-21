@@ -1,26 +1,12 @@
 # cso-insight
 
-CSO Insight is an open work sample by ElementeX Labs Inc. It reads public sewer overflow reports from Massachusetts, flags data quality problems, ranks the overflow outlets (outfalls) and tests whether a rainfall-based model predicts overflow volume better than a simple average. It is for engineers deciding whether such public reports are reliable enough to set outlet priorities.
-
-[![Engineer summary page from CSO Insight for Massachusetts sewer overflow reports: the 2025 hold-out metrics, where the simple mean-volume baseline beats the rainfall model on the scored reports, above the outfall rankings with intervals.](docs/media/hero_report.png)](https://elementexlabs.github.io/cso-insight/report/)
-
-**Try it live:** [the engineer summary and the documentation](https://elementexlabs.github.io/cso-insight/), built from public data, with nothing to install.
-
-**Watch the 40-second walkthrough** (captioned, no sound needed). Select the preview to play the full video.
-
-[![Captioned walkthrough of CSO Insight: the documentation home, the quick start, the 2025 hold-out metrics, both outfall rankings, the quality flags, the pinned data manifest and the results page.](docs/media/demo-preview.gif)](https://elementexlabs.github.io/cso-insight/media/demo.mp4)
+Can a rainfall model predict the reported volume of combined sewer overflows (CSOs) better than a simple average? On the Massachusetts reports of 2025, no. On the 1,625 paired report rows it could score, a mean-volume baseline per outfall had a pooled RMSE of 4,801 cubic metres (95% interval 4,454 to 5,198), against 12,210 cubic metres (7,101 to 16,489) for the rainfall model. The ranking of outfalls by report count in 2022 to 2024 held in 2025 (Spearman 0.851, 95% interval 0.830 to 0.854, 171 identifiers). Better reporting and local validation are prerequisites before a model like this sets outfall priorities. Values and intervals: [results/evaluation.json](results/evaluation.json).
 
 ![Bar chart of pooled RMSE on 1,625 scored paired 2025 report rows: the mean-volume baseline at 4,801 cubic metres (95% interval 4,454 to 5,198) against the rainfall model at 12,210 cubic metres (7,101 to 16,489); lower is better.](docs/media/rmse_comparison.png)
 
-### Example outputs
+CSO Insight is an open work sample by ElementeX Labs Inc. It reads public sewer overflow reports from Massachusetts, flags data quality problems, ranks the overflow outlets (outfalls) with intervals and runs the comparison above. The engineer summary and the documentation are published at [elementexlabs.github.io/cso-insight](https://elementexlabs.github.io/cso-insight/).
 
-| | |
-|---|---|
-| ![Hold-out evaluation metrics table for test year 2025: report-row count stability (Spearman 0.851), pooled RMSE for the rainfall model and for the mean-volume baseline, and the rain-threshold positive fraction, each with a 95% interval and its N.](docs/media/example_metrics.png) | ![Top 15 outfalls ranked by report rows, 2022 to 2025, with 95% intervals on the counts; Fall River and New Bedford outfalls lead the list.](docs/media/example_ranking_rows.png) |
-| ![Quality flag counts: identifiers with mostly missing volume or rainfall, and report rows flagged as negative, implausible, over 72 hours or with unresolved clocks; 176 report rows are quarantined from fitting.](docs/media/example_qa_flags.png) | ![Data manifest page: the Massachusetts feed, its owner, the acquisition link, the snapshot SHA-256 and its size, 16,720 CSO report rows.](docs/media/example_data_manifest.png) |
-| ![Bar chart of report row counts for the leading outfall identifiers, 2022 to 2025, with intervals.](results/figures/top_outfalls_frequency.png) | ![Bar chart of observed reported volume for the leading outfall identifiers, 2022 to 2025, with intervals.](results/figures/top_outfalls_volume.png) |
-
-## How it works
+## Method
 
 1. Download the public Massachusetts overflow file from AMEND (16,720 report rows; snapshot hash pinned).
 2. Parse timestamps, convert units and flag data quality issues.
@@ -30,35 +16,27 @@ CSO Insight is an open work sample by ElementeX Labs Inc. It reads public sewer 
 6. Compare the rainfall model with a simple mean-volume baseline on the same scored subset of 2025 reports (1,625 of 3,075 eligible reports).
 7. Write the results file, the JSON summaries and the engineer summary page (`results/report.html`).
 
-## Architecture
+Report rows are the counting unit, not reconciled discharges. Code: `src/cso_insight/` behind the `cso-insight` command; tests in `tests/`; outputs in `results/`.
 
-- `src/cso_insight/`: download, cleaning, alignment, quality flags, cohort ledger, models, baselines and the report, behind the `cso-insight` command.
-- `results/`: the generated engineer summary, JSON summaries and figures.
-- `docs/site/` and `mkdocs.yml`: the documentation site, published with the report on GitHub Pages.
-- `tests/`: unit and regression tests.
-- `scripts/make_showcase_media.py`: rebuilds the images and the walkthrough on this page from the real outputs.
+## Results (Massachusetts EEA, hold-out 2025)
 
-## Design choices
+Task: Rank outfalls and compare rainfall-response modelling against simple baselines on open notification CSVs.
 
-- A simple baseline comes first: the rainfall model has to beat a mean-volume average on the same paired rows before it earns trust. Here it does not.
-- Every exclusion is counted in a ledger, so a reader can see how much data each rule removes.
-- The source snapshot is pinned by its hash, so every number can be regenerated and checked.
-- Report rows are the counting unit, not reconciled discharges, and the text says so.
+Data: 16,720 CSO rows from the [Archive of Massachusetts Environmental Data (AMEND)](https://openamend.org/data/EEADP_CSO.csv) feed (snapshot hash pinned in `docs/DATA_MANIFEST.md`). Volume and rainfall are co-reported utility fields; 48% of rows lack one or both measurements.
 
-## Why it matters
+Headline result: Report-row counts across identifiers are stable from train+validation to 2025. The mean-volume baseline beats the log1p rainfall model on the model-scorable paired test subset. See [generated results](RESULTS.md) for values, intervals and cohort denominators. This Massachusetts demonstration is a work sample; it does not establish local utility validation or operational readiness.
 
-On the 2025 reports it could score, a simple average beat the model; deployment needs better reporting and local checks.
+Counting unit: Both Public Notification Report and Verified Data Report rows are retained. A physical discharge can have multiple reports. We have not reconciled stages into distinct discharges. Report-class sensitivity and missingness are exported; the missing-measurement rows are overwhelmingly notification-stage submissions.
 
-The images and the walkthrough on this page are rebuilt from the real outputs with `python scripts/make_showcase_media.py` (it needs Google Chrome, ffmpeg and the documentation extras).
+Exclusions: The volume cap excludes 156 evaluation-period reports; 159 across the full feed. The 32.1% volume reduction uses 2022-2025 reported volume after other eligibility rules, relative to the same cohort with the volume cap relaxed. This is filter sensitivity, not a verified error correction. The 171 evaluation identifiers include 169 named IDs and two pooled UNKNOWN permittee buckets.
 
----
+Scoring support: RMSE scores 1,625/1,643 eligible paired 2025 rows and 1,625/3,075 eligible 2025 reports. Eighteen paired rows across ten IDs lack a training model (at least five variable-rainfall pairs required). The baseline uses exactly the same scored subset.
 
-**Buyer decision: Are these public overflow reports reliable enough to guide outfall priorities or justify a rainfall model?**
+Threshold support: Positive means at or above the training+validation 75th percentile. Of 1,643 eligible test rows with known rainfall, 1,635 have at least three training rainfall observations; eight rows across five identifiers default negative and remain in the denominator. This conditional fraction does not measure detection or accuracy on non-event days.
 
-This work sample traces intake, QA, cohort accounting and baseline evaluation.
-Reported priorities change under the volume cap, and the simple mean-volume baseline
-beats the rainfall model. Better reporting and local validation are prerequisites
-for deployment. This supplies no firm client reference or operational validation.
+Evaluation status: The frozen analysis plan is amended retrospectively; pre-result registration is unverified. Its archived bytes and SHA-256 are preserved. Results were seen before `docs/PREREGISTRATION_AMENDMENT_2026-10-01.md` clarified estimands. Rainfall-normalized outfall ranking was not evaluated; Spearman compares raw event counts.
+
+## Checks
 
 Verification covers timestamp parsing, snapshot preservation, measurement units,
 cohort denominators, threshold support and reproducible analytical outputs.
@@ -73,37 +51,20 @@ the [evaluation metrics](results/evaluation.json).
 These checks do not establish independent approval, remote CI validation or
 operational readiness.
 
-## Case study (Massachusetts EEA, hold-out 2025)
-
-**Task:** Rank outfalls and compare rainfall-response modelling against simple baselines on open notification CSVs.
-
-**Data:** 16,720 CSO rows from the [Archive of Massachusetts Environmental Data (AMEND)](https://openamend.org/data/EEADP_CSO.csv) feed (snapshot hash pinned in `docs/DATA_MANIFEST.md`). Volume and rainfall are co-reported utility fields; 48% of rows lack one or both measurements.
-
-**Headline result:** Report-row counts across identifiers are stable from train+validation to 2025. The mean-volume baseline beats the log1p rainfall model on the model-scorable paired test subset. See [generated results](RESULTS.md) for values, intervals and cohort denominators. This Massachusetts demonstration is a work sample; it does not establish local utility validation or operational readiness.
-
-**Counting unit:** Both Public Notification Report and Verified Data Report rows are retained. A physical discharge can have multiple reports. We have not reconciled stages into distinct discharges. Report-class sensitivity and missingness are exported; the missing-measurement rows are overwhelmingly notification-stage submissions.
-
-**Exclusions:** The volume cap excludes 156 evaluation-period reports; 159 across the full feed. The 32.1% volume reduction uses 2022-2025 reported volume after other eligibility rules, relative to the same cohort with the volume cap relaxed. This is filter sensitivity, not a verified error correction. The 171 evaluation identifiers include 169 named IDs and two pooled UNKNOWN permittee buckets.
-
-**Scoring support:** RMSE scores 1,625/1,643 eligible paired 2025 rows and 1,625/3,075 eligible 2025 reports. Eighteen paired rows across ten IDs lack a training model (at least five variable-rainfall pairs required). The baseline uses exactly the same scored subset.
-
-**Threshold support:** Positive means at or above the training+validation 75th percentile. Of 1,643 eligible test rows with known rainfall, 1,635 have at least three training rainfall observations; eight rows across five identifiers default negative and remain in the denominator. This conditional fraction does not measure detection or accuracy on non-event days.
-
-**Evaluation status:** The frozen analysis plan is amended retrospectively; pre-result registration is unverified. Its archived bytes and SHA-256 are preserved. Results were seen before `docs/PREREGISTRATION_AMENDMENT_2026-10-01.md` clarified estimands. Rainfall-normalized outfall ranking was not evaluated; Spearman compares raw event counts.
-
-Regenerate analytical outputs and browser results:
+## Rebuild
 
 ```bash
+python3.11 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements-lock.txt
+pip install --no-deps -e .
+./scripts/download_data.sh   # optional: separate, hash-verified acquisition file
 cso-insight run --root .
 ```
 
 Open `results/report.html` for the engineer summary. See `RESULTS.md` for code-generated metrics.
 
-## Open by design
-
-**Open by design.** ElementeX Labs Inc. publishes methods, data sources, and evaluation code so others can verify and extend the work. No client data, no hidden steps, no results without the command that regenerates them.
-
-## What is new
+## Related work
 
 Bounded engineering contribution: an integrated open Python work sample that ingests Massachusetts notification CSVs, flags data quality issues, fits per-outfall log1p rainfall-response models, produces descriptive rankings with bootstrap intervals on counts/volumes, and evaluates amended hold-out baselines in one command.
 
@@ -116,17 +77,6 @@ Nearest prior art:
 - [EPA SWMM](https://www.epa.gov/water-research/storm-water-management-model-swmm) and [PySWMM](https://joss.theoj.org/papers/10.21105/joss.02292): physics-based simulation, not notification analytics.
 - [AMEND dashboard and open scripts](https://openamend.org/dashboard.html): CSV-backed discharge analysis, rainfall alignment and reporting-quality views on the same Massachusetts feed; this package adds typed API, cohort exports and amended hold-out metrics.
 - McGrath et al. (2019), rainfall controls on CSO variability, [doi:10.1029/2019WR025336](https://doi.org/10.1029/2019WR025336): analytical rainfall-CSO modelling on network and rainfall structure, not notification ingestion.
-
-## Quick start
-
-```bash
-python3.11 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements-lock.txt
-pip install --no-deps -e .
-./scripts/download_data.sh   # optional: separate, hash-verified acquisition file
-cso-insight run --root .
-```
 
 ## Data licence
 
@@ -186,3 +136,5 @@ The existing public baseline documentation and aggregate results remain availabl
 Synthetic tests cannot reproduce the 18,759-row linkage study without its exact,
 separately rights-held snapshot. Code is Apache-2.0; original documentation uses
 [CC BY 4.0](docs/LICENSE-CC-BY-4.0.txt). No upstream records are relicensed.
+
+Its code and documentation were written with AI coding assistants under the direction of Amir Daneshpajouh, and checked by their tests and an AI-assisted release check before publication.
