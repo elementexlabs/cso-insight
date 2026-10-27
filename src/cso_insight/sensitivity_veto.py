@@ -297,7 +297,7 @@ def render_analysis(result: dict[str, Any]) -> str:
     lines = [
         "# Start-time tolerance sensitivity and simple-veto comparator",
         "",
-        "Local only; no push, network, Hub or publication.",
+        "Local only; no push, network or publication.",
         "",
         f"Snapshot SHA-256: `{result['snapshot_sha256']}`. L `linkage/2`; V2 `{V2_VERSION}`.",
         "",
